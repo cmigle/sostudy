@@ -84,8 +84,8 @@ if (canvas) {
     camera.updateProjectionMatrix();
     // place globe behind the car (right column on desktop, top on mobile)
     const mobile = w < 900;
-    globe.position.set(mobile ? 0 : 1.9 * camera.aspect / 1.6, mobile ? 1.1 : .1, 0);
-    globe.scale.setScalar(mobile ? 1.5 : 2.2);
+    globe.position.set(mobile ? 0 : 1.15 * camera.aspect, mobile ? 1.2 : .15, 0);
+    globe.scale.setScalar(mobile ? 1.25 : 1.6);
   }
   size();
   addEventListener("resize", size);

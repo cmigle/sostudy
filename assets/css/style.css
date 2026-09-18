@@ -116,7 +116,7 @@ html.has-cursor .cursor, html.has-cursor .cursor-ring { opacity: 1; }
   backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2);
   border: 1px solid var(--line); border-radius: 999px;
 }
-.logo { display: flex; align-items: center; gap: 8px; font: 700 20px/1 var(--f-sans); letter-spacing: -.04em; }
+.logo { display: flex; align-items: baseline; gap: 1px; font: 700 20px/1 var(--f-sans); letter-spacing: -.04em; }
 .logo .sos { font-family: var(--f-dot); font-weight: 900; color: var(--red); font-size: 24px; letter-spacing: 0; }
 .logo-mark { width: 22px; height: 22px; }
 .nav { display: flex; gap: 4px; margin-left: auto; }
@@ -196,7 +196,7 @@ html.has-cursor .cursor, html.has-cursor .cursor-ring { opacity: 1; }
 section { position: relative; }
 .sec { padding: clamp(80px, 12vw, 160px) 0; }
 .sec-head { display: grid; grid-template-columns: 1fr 2fr; gap: 24px; margin-bottom: clamp(40px, 6vw, 80px); align-items: end; }
-.sec-head h2 { font-size: clamp(40px, 6.4vw, 96px); }
+.sec-head h2 { font-size: clamp(36px, 5vw, 76px); }
 @media (max-width: 760px) { .sec-head { grid-template-columns: 1fr; } }
 
 .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
@@ -207,9 +207,10 @@ section { position: relative; }
 
 /* ============ Hero ============ */
 .hero { min-height: 100svh; padding-top: 110px; display: flex; flex-direction: column; overflow: hidden; }
-.hero-grid { flex: 1; display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; gap: 20px; position: relative; z-index: 2; }
-.hero h1 { font-size: clamp(56px, 10.5vw, 168px); line-height: .9; letter-spacing: -.04em; }
-.hero h1 .dot { color: var(--red); display: block; font-size: 1.04em; letter-spacing: -.03em; }
+.hero-grid > * { min-width: 0; }
+.hero-grid { flex: 1; display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; gap: 20px; position: relative; z-index: 2; }
+.hero h1 { font-size: clamp(54px, 8.2vw, 136px); line-height: .9; letter-spacing: -.04em; }
+.hero h1 .dot { color: var(--red); display: block; font-size: .8em; letter-spacing: -.04em; margin-top: .08em; }
 .hero-sub { max-width: 34ch; font-size: clamp(18px, 1.6vw, 22px); color: var(--ink-2); margin: 28px 0 36px; }
 .hero-sub strong { color: var(--ink); font-weight: 500; }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }

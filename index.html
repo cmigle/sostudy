@@ -5,10 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SOStudy · Greitoji mokslo pagalba</title>
   <meta name="description" content="Įstrigai sprendžiant uždavinį? Greita, efektyvi pagalba matematikoje 1–12 klasių mokiniams. Mokėk tik už praleistą laiką.">
+  <link rel="canonical" href="https://sostudy.lt/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="lt_LT">
+  <meta property="og:site_name" content="SOStudy">
+  <meta property="og:url" content="https://sostudy.lt/">
   <meta property="og:title" content="SOStudy · Greitoji mokslo pagalba">
   <meta property="og:description" content="Greita, efektyvi pagalba matematikoje. Atsakome per kelias minutes.">
-  <meta property="og:image" content="https://sostudy.lt/assets/img/car.png">
+  <meta property="og:image" content="https://sostudy.lt/assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#ecebe6">
+  <link rel="preload" as="image" href="/assets/img/car.webp" type="image/webp" fetchpriority="high">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "EducationalOrganization",
+        "@id": "https://sostudy.lt/#org",
+        "name": "SOStudy",
+        "url": "https://sostudy.lt/",
+        "logo": "https://sostudy.lt/assets/img/favicon.svg",
+        "image": "https://sostudy.lt/assets/img/og.png",
+        "email": "info@sostudy.lt",
+        "description": "Greitoji mokslo pagalba: trumpos individualios matematikos konsultacijos 1–12 klasių mokiniams, mokant tik už praleistą laiką.",
+        "areaServed": "LT",
+        "address": { "@type": "PostalAddress", "addressLocality": "Kaunas", "addressCountry": "LT" },
+        "founder": [
+          { "@type": "Person", "name": "Evelina Riukaitė" },
+          { "@type": "Person", "name": "Aistė Zuzevičiūtė" }
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://sostudy.lt/#site",
+        "url": "https://sostudy.lt/",
+        "name": "SOStudy",
+        "inLanguage": "lt-LT",
+        "publisher": { "@id": "https://sostudy.lt/#org" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Kiek laiko atsakome?", "acceptedAnswer": { "@type": "Answer", "text": "Į užklausas atsakome per kelias minutes, dažniausiai iškart." } },
+          { "@type": "Question", "name": "Kokie dalykai prieinami?", "acceptedAnswer": { "@type": "Answer", "text": "Šiuo metu teikiame pagalbą tik matematikos užduotyse, 1–12 klasėms." } },
+          { "@type": "Question", "name": "Kaip prisijungti prie pamokos?", "acceptedAnswer": { "@type": "Answer", "text": "Gauni nuorodą el. paštu prieš sesiją." } },
+          { "@type": "Question", "name": "Ką daryti, jei laiškas nepasiekė?", "acceptedAnswer": { "@type": "Answer", "text": "Patikrink šlamšto aplanką arba susisiek su mumis per info@sostudy.lt." } },
+          { "@type": "Question", "name": "Ar galiu atsiųsti uždavinio nuotrauką?", "acceptedAnswer": { "@type": "Answer", "text": "Taip. Nuotrauka keliauja tiesiai mums el. paštu ir niekur kitur nesaugoma." } }
+        ]
+      }
+    ]
+  }
+  </script>
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,7 +99,7 @@
       <div class="car-stage" data-cursor="SOS!">
         <div class="car-3d" id="car3d">
           <div class="siren-glow"></div>
-          <img src="/assets/img/car.png" alt="SOStudy greitosios pagalbos automobilis su abiturientų kepure" width="900" height="737">
+          <img src="/assets/img/car.webp" alt="SOStudy greitosios pagalbos automobilis su abiturientų kepure" width="900" height="737">
           <span class="car-tag t1"><b>●</b> Atsakome per min.</span>
           <span class="car-tag t2">10 min <b>nemokamai</b></span>
           <span class="car-tag t3">1–12 klasės</span>
@@ -117,7 +165,7 @@
         </div>
       </div>
       <div class="road"></div>
-      <div class="drive-car" id="driveCar"><img src="/assets/img/car.png" alt="" width="900" height="737"></div>
+      <div class="drive-car" id="driveCar"><img src="/assets/img/car.webp" alt="" width="900" height="737" loading="lazy"></div>
     </div>
   </section>
 
