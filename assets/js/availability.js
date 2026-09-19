@@ -45,8 +45,9 @@
       a.push([t, t + 2 * h]);
       b.push([t + 3 * h, t + 5.5 * h]);
     }
-    if (!busy) a.unshift([now - h, now + 1.5 * h]);
-    return [a, b];
+    if (!busy) return [[[now - h, now + 1.5 * h], ...a], b];
+    const notNow = l => l.filter(([s, e]) => !(s <= now && e > now));
+    return [notNow(a), notNow(b)];
   }
 
   async function fetchAll() {

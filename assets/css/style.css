@@ -456,6 +456,7 @@ section { position: relative; }
 }
 .drop.is-over { border-color: var(--red); background: rgba(255,74,75,.06); }
 .drop input { position: absolute; inset: 0; opacity: 0; width: 100%; }
+.drop-empty { display: grid; gap: 6px; justify-items: center; }
 .drop .dot { font-size: 34px; color: var(--red); line-height: 1; }
 .drop small { color: var(--ink-2); font-family: var(--f-mono); font-size: 12px; }
 .drop.has-file { padding: 12px; border-style: solid; border-color: var(--line); }
