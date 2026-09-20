@@ -11,7 +11,8 @@ window.SOS = {
   minSlot: 15,
 
   email: "info@sostudy.lt",
-  linkedin: "https://www.linkedin.com/company/sostudy",
+  linkedin: "https://www.linkedin.com/company/sostudy-lt",
+  instagram: "https://www.instagram.com/sostudy.lt/",
 
   // LinkedIn post URNs, newest first. On a post: ··· → Embed this post → copy the
   // "urn:li:share:..." or "urn:li:ugcPost:..." part of the iframe src.
