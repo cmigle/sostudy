@@ -1,14 +1,15 @@
 (() => {
   const form = document.getElementById("helpForm");
 
-  /* ---------- Photo: drag & drop, preview, shrink before sending ---------- */
+  /* ---------- Photo: drag and drop, paste, preview, shrink before sending ---------- */
   const drop = document.getElementById("drop");
   const input = document.getElementById("photo");
   const img = document.getElementById("previewImg");
   const meta = document.getElementById("previewMeta");
+  const note = document.getElementById("photoNote");
   const MAX = 10 * 1024 * 1024, EDGE = 2000;
 
-  const kb = n => n > 1048576 ? (n / 1048576).toFixed(1) + " MB" : Math.round(n / 1024) + " KB";
+  const kb = n => n > 1048576 ? (n / 1048576).toFixed(1).replace(".", ",") + " MB" : Math.round(n / 1024) + " KB";
 
   async function shrink(file) {
     try {
@@ -25,14 +26,17 @@
     }
   }
 
+  function say(text) { note.textContent = text; note.hidden = !text; }
+
   async function take(file) {
-    if (!file) return clear();
-    if (!file.type.startsWith("image/") && !/\.hei[cf]$/i.test(file.name)) { clear(); return alert("Įkelk nuotrauką (JPG, PNG, HEIC)."); }
+    say("");
+    if (!file) return;
+    if (!file.type.startsWith("image/") && !/\.hei[cf]$/i.test(file.name)) return say("Šis failas nėra nuotrauka. Pasirink JPG, PNG arba HEIC failą.");
     const f = await shrink(file);
-    if (f.size > MAX) { clear(); return alert("Nuotrauka per didelė (daugiau nei 10 MB)."); }
+    if (f.size > MAX) return say(`Nuotrauka per didelė (${kb(f.size)}). Didžiausias leistinas dydis yra 10 MB.`);
     form._photo = f;
     img.src = URL.createObjectURL(f);
-    meta.textContent = `${f.name} · ${kb(f.size)}`;
+    meta.textContent = `${f.name}, ${kb(f.size)}`;
     drop.classList.add("has-file");
     input.value = "";
   }
@@ -40,14 +44,14 @@
     form._photo = null;
     input.value = "";
     drop.classList.remove("has-file");
+    say("");
   }
 
   input.addEventListener("change", () => take(input.files[0]));
-  document.getElementById("photoClear").addEventListener("click", e => { e.preventDefault(); clear(); });
+  document.getElementById("photoClear").addEventListener("click", e => { e.preventDefault(); clear(); input.focus(); });
   ["dragenter", "dragover"].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.add("is-over"); }));
   ["dragleave", "drop"].forEach(t => drop.addEventListener(t, () => drop.classList.remove("is-over")));
   drop.addEventListener("drop", e => { e.preventDefault(); take(e.dataTransfer.files[0]); });
-  // paste a screenshot straight into the page
   addEventListener("paste", e => {
     const f = [...(e.clipboardData && e.clipboardData.files || [])].find(f => f.type.startsWith("image/"));
     if (f) take(f);
@@ -86,7 +90,7 @@
     const d = new Date(Date.now() + offsetDays * 864e5);
     const p = Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: TZ, year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric", hour12: false }).formatToParts(d).map(x => [x.type, x.value]));
     const asUTC = Date.UTC(p.year, p.month - 1, p.day, p.hour % 24, p.minute);
-    const offset = asUTC - Math.floor(d.getTime() / 6e4) * 6e4; // Vilnius minus UTC
+    const offset = asUTC - Math.floor(d.getTime() / 6e4) * 6e4;
     return Date.UTC(p.year, p.month - 1, p.day) - offset;
   }
 
@@ -97,16 +101,14 @@
     for (let d = 0; d < 7; d++) {
       const mid = vilniusMidnight(d);
       const row = document.createElement("div");
-      row.className = "week-row";
-      const name = d === 0 ? "Šnd" : DAY[new Date(mid + 12 * 36e5).getUTCDay()];
+      row.className = "week-row" + (d === 0 ? " today" : "");
       let cells = "";
       for (let i = 0; i < 28; i++) {
         const s = mid + (8 + i / 2) * 36e5, e = s + 18e5;
         const on = windows.some(([a, b]) => a < e && b > s);
-        const isNow = now >= s && now < e;
-        cells += `<i class="${on ? "on" : ""}${isNow ? " now" : ""}"></i>`;
+        cells += `<i class="${on ? "on" : ""}${now >= s && now < e ? " now" : ""}"></i>`;
       }
-      row.innerHTML = `<span class="label">${name}</span><div class="week-cells">${cells}</div>`;
+      row.innerHTML = `<span>${DAY[new Date(mid + 12 * 36e5).getUTCDay()]}</span><div class="week-cells">${cells}</div>`;
       week.insertBefore(row, axis);
     }
     week.hidden = false;
@@ -116,16 +118,18 @@
     av.dataset.state = a.state;
     people.forEach((p, i) => p.classList.toggle("on", i < a.freeCount));
     if (a.state === "free") {
-      state.textContent = "LAISVA";
-      sub.innerHTML = `${a.freeCount > 1 ? "Abi įkūrėjos laisvos" : "Kažkas laisvas"} dabar${a.until ? `, bent iki <strong>${a.hm(a.until)}</strong>` : ""}. Siųsk užklausą ir atsakysime per kelias minutes.`;
+      state.textContent = "Laisva";
+      sub.innerHTML = `${a.freeCount > 1 ? "Šiuo metu laisvos abi korepetitorės" : "Šiuo metu laisva viena korepetitorė"}${a.until ? `, bent iki <strong>${a.hm(a.until)}</strong>` : ""}. Užpildyk formą ir atsakysime per kelias minutes.`;
     } else if (a.state === "busy") {
-      state.textContent = "UŽIMTA";
+      state.textContent = "Užimta";
       sub.innerHTML = a.next
-        ? `Šiuo metu visi užimti. Artimiausias laisvas laikas: <strong>${a.label(a.next)}</strong>.`
-        : "Šią savaitę laisvų laikų neliko. Parašyk ir susitarsime.";
+        ? `Šiuo metu negalime atsakyti. Artimiausias laisvas laikas: <strong>${a.label(a.next)}</strong>. Gali pasirinkti laiką žemiau.`
+        : "Šią savaitę laisvo laiko neliko. Užpildyk formą ir susitarsime dėl laiko el. paštu.";
     } else {
       state.textContent = "SOS";
-      sub.innerHTML = "Parašyk mums. Atsakysime kuo greičiau, dažniausiai per kelias minutes.";
+      sub.textContent = a.error
+        ? "Nepavyko patikrinti, ar kas nors laisvas. Užpildyk formą ir atsakysime kuo greičiau."
+        : "Užpildyk formą ir atsakysime kuo greičiau.";
     }
 
     if (a.windows.length) drawWeek(a.windows);
@@ -133,9 +137,9 @@
     a.slots.forEach(s => {
       const b = document.createElement("button");
       b.type = "button"; b.className = "slot";
-      b.dataset.label = s.label;
-      b.textContent = s.label;
-      b.setAttribute("aria-pressed", laikas.value === s.label);
+      b.dataset.label = a.cap(s.label);
+      b.textContent = a.cap(s.label);
+      b.setAttribute("aria-pressed", laikas.value === b.dataset.label);
       b.addEventListener("click", () => pick(b.getAttribute("aria-pressed") === "true" ? null : b));
       slots.append(b);
     });
