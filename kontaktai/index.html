@@ -2,23 +2,23 @@
 <html lang="lt">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Kontaktai | SOStudy</title>
-  <meta name="description" content="Susisiek su SOStudy komanda: info@sostudy.lt. Klausimai, bendradarbiavimas su mokyklomis ar pagalba su matematikos uždaviniu.">
+  <meta name="description" content="Susisiek su „SOStudy“: info@sostudy.lt. Klausimai, pasiūlymai ir bendradarbiavimas su mokyklomis.">
   <link rel="canonical" href="https://sostudy.lt/kontaktai/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="lt_LT">
   <meta property="og:site_name" content="SOStudy">
   <meta property="og:url" content="https://sostudy.lt/kontaktai/">
   <meta property="og:title" content="Kontaktai | SOStudy">
-  <meta property="og:description" content="Susisiek su SOStudy komanda: info@sostudy.lt. Klausimai, bendradarbiavimas su mokyklomis ar pagalba su matematikos uždaviniu.">
+  <meta property="og:description" content="Susisiek su „SOStudy“: info@sostudy.lt. Klausimai, pasiūlymai ir bendradarbiavimas su mokyklomis.">
   <meta property="og:image" content="https://sostudy.lt/assets/img/og.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#ecebe6">
+  <meta name="theme-color" content="#efede7">
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@700..900&family=Space+Grotesk:wght@400..700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/fonts.css">
   <link rel="stylesheet" href="/assets/css/style.css">
   <script type="application/ld+json">
 {
@@ -31,7 +31,8 @@
       "@id": "https://sostudy.lt/#org",
       "name": "SOStudy",
       "email": "info@sostudy.lt",
-      "contactPoint": { "@type": "ContactPoint", "contactType": "customer support", "email": "info@sostudy.lt", "availableLanguage": ["lt", "en"] }
+      "sameAs": ["https://www.linkedin.com/company/sostudy-lt", "https://www.instagram.com/sostudy.lt/"],
+      "contactPoint": { "@type": "ContactPoint", "contactType": "customer support", "email": "info@sostudy.lt", "availableLanguage": ["lt"] }
     }
   }
   </script>
@@ -41,55 +42,57 @@
 <header class="site-head">
   <div class="wrap">
     <div class="head-bar">
-      <a href="/" class="logo" aria-label="SOStudy pradžia"><span class="sos">SOS</span>tudy</a>
-      <nav class="nav" id="nav">
+      <a href="/" class="logo" aria-label="SOStudy, pagrindinis puslapis"><span class="sos">SOS</span>tudy</a>
+      <nav class="nav" id="nav" aria-label="Pagrindinis meniu">
         <a href="/">Pagrindinis</a>
         <a href="/apie-mus/">Apie mus</a>
         <a href="/reikia-pagalbos/">Reikia pagalbos?</a>
         <a href="/kontaktai/" aria-current="page">Kontaktai</a>
-        <a href="/reikia-pagalbos/" class="status-pill" data-status><span class="status-dot"></span><span>Tikrinama…</span></a>
+        <a href="/reikia-pagalbos/" class="status-pill" data-status><span class="status-dot" aria-hidden="true"></span><span data-status-text>Tikrinama…</span></a>
       </nav>
-      <a href="/reikia-pagalbos/" class="status-pill" data-status><span class="status-dot"></span><span>Tikrinama…</span></a>
-      <button class="burger" aria-label="Meniu" aria-expanded="false" aria-controls="nav"><span></span></button>
+      <a href="/reikia-pagalbos/" class="status-pill" data-status><span class="status-dot" aria-hidden="true"></span><span data-status-text>Tikrinama…</span></a>
+      <button class="burger" type="button" aria-label="Meniu" aria-expanded="false" aria-controls="nav"><span></span></button>
     </div>
   </div>
 </header>
 
-<main>
-<section class="page-hero dotgrid">
+<main id="main">
+<section class="page-hero notebook">
     <div class="wrap">
-      <p class="label reveal"><b>●</b> [ 01 ] Kontaktai</p>
-      <h1 class="split" style="margin-top:18px">Susisiek <span class="dot">su mumis.</span></h1>
-      <p class="lead reveal">Klausimai, bendradarbiavimas mokykloms ar tiesiog „labas“. Rašyk bet kada, atsakome greitai.</p>
+      <h1>Kontaktai</h1>
+      <p class="lead">Turi klausimų, pasiūlymų ar nori bendradarbiauti? Rašyk el. paštu arba užpildyk formą.</p>
     </div>
   </section>
 
   <section class="sec" style="padding-top:0">
     <div class="wrap contact-grid">
       <div class="mail-card reveal">
-        <span class="ring" aria-hidden="true"></span>
-        <p class="label">El. paštas</p>
+        <p>El. paštas</p>
         <a class="big" href="mailto:info@sostudy.lt" data-email>info@sostudy.lt</a>
         <div class="mail-actions">
-          <button class="btn" type="button" id="copyMail">Kopijuoti <span class="arr">⧉</span></button>
-          <a class="btn btn-ghost" id="gmail" href="https://mail.google.com/mail/?view=cm&amp;to=info@sostudy.lt" target="_blank" rel="noopener">Rašyti per Gmail <span class="arr">→</span></a>
+          <button class="btn" type="button" id="copyMail">Kopijuoti adresą</button>
+          <a class="btn btn-line" id="gmail" href="https://mail.google.com/mail/?view=cm&amp;to=info@sostudy.lt" target="_blank" rel="noopener">Rašyti per „Gmail“</a>
         </div>
       </div>
       <div class="side-cards">
-        <a class="mini reveal" href="https://www.linkedin.com/" target="_blank" rel="noopener">
-          <img src="/assets/img/evelina.jpg" alt="" loading="lazy">
-          <div><p class="label" style="margin:0 0 6px">Co-founder</p><h3>Evelina Riukaitė</h3></div>
-          <span class="go" aria-hidden="true">in</span>
+        <a class="mini dark reveal" href="/reikia-pagalbos/" data-status>
+          <span class="status-dot" aria-hidden="true"></span>
+          <div><h3>Reikia pagalbos su uždaviniu?</h3><p data-status-text>Tikrinama…</p></div>
+          <span class="go" aria-hidden="true">→</span>
         </a>
-        <a class="mini reveal" href="https://www.linkedin.com/" target="_blank" rel="noopener">
-          <img src="/assets/img/aiste.jpg" alt="" loading="lazy">
-          <div><p class="label" style="margin:0 0 6px">Co-founder</p><h3>Aistė Zuzevičiūtė</h3></div>
-          <span class="go" aria-hidden="true">in</span>
+        <div class="mini reveal">
+          <img src="/assets/img/evelina.jpg" alt="" loading="lazy" width="60" height="60">
+          <div><h3>Evelina Riukaitė</h3><p>Įkūrėja</p></div>
+        </div>
+        <div class="mini reveal">
+          <img src="/assets/img/aiste.jpg" alt="" loading="lazy" width="60" height="60">
+          <div><h3>Aistė Zuzevičiūtė</h3><p>Įkūrėja</p></div>
+        </div>
+        <a class="mini reveal" href="https://www.linkedin.com/company/sostudy-lt" target="_blank" rel="noopener" data-linkedin>
+          <div><h3>LinkedIn</h3><p>SOStudy puslapis</p></div><span class="go" aria-hidden="true">→</span>
         </a>
-        <a class="mini reveal" href="/reikia-pagalbos/" data-status style="background:var(--night);color:var(--on-night);border-color:transparent">
-          <span class="status-dot" style="width:14px;height:14px;margin:0 6px"></span>
-          <div><p class="label" style="margin:0 0 6px">Reikia pagalbos su uždaviniu?</p><h3><span>Tikrinama…</span></h3></div>
-          <span class="go" aria-hidden="true" style="border-color:var(--on-night)">→</span>
+        <a class="mini reveal" href="https://www.instagram.com/sostudy.lt/" target="_blank" rel="noopener" data-instagram>
+          <div><h3>Instagram</h3><p>@sostudy.lt</p></div><span class="go" aria-hidden="true">→</span>
         </a>
       </div>
     </div>
@@ -98,21 +101,19 @@
   <section class="sec" style="padding-top:0">
     <div class="wrap">
       <div class="form-card reveal">
-        <div class="sec-head" style="margin-bottom:36px">
-          <p class="label">[ 02 ] <b>Parašyk žinutę</b></p>
-          <h2 style="font-size:clamp(32px,4vw,56px)">Turite klausimų?</h2>
-        </div>
-        <form class="form" id="contactForm" action="/send.php" method="post" novalidate data-sent="">
-          <input type="hidden" name="_subject" value="Žinutė iš sostudy.lt">
+        <h2>Parašyk žinutę</h2>
+        <form class="form" id="contactForm" action="/send.php" method="post" novalidate>
+          <input type="hidden" name="_subject" value="SOStudy: žinutė iš svetainės">
           <input type="hidden" name="forma" value="kontaktai">
           <label class="hp" aria-hidden="true">Nepildyti <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
           <div class="row2">
-            <label class="field"><span>Vardas <b>*</b></span><input name="vardas" required autocomplete="name"></label>
-            <label class="field"><span>El. pašto adresas <b>*</b></span><input type="email" name="email" required autocomplete="email" inputmode="email"></label>
+            <label class="field"><span>Vardas <b aria-hidden="true">*</b></span><input name="vardas" required autocomplete="name"></label>
+            <label class="field"><span>El. paštas <b aria-hidden="true">*</b></span><input type="email" name="email" required autocomplete="email" inputmode="email"></label>
           </div>
-          <label class="field"><span>Žinutė <b>*</b></span><textarea name="zinute" required></textarea></label>
+          <label class="field"><span>Žinutė <b aria-hidden="true">*</b></span><textarea name="zinute" required></textarea></label>
+          <label class="check"><input type="checkbox" name="sutikimas" value="taip" required> <span>Sutinku, kad mano duomenys būtų naudojami atsakant į žinutę. Daugiau informacijos rasi <a href="/privatumo-politika/" target="_blank">privatumo politikoje</a>.</span></label>
           <div class="form-foot">
-            <button class="btn btn-red" type="submit">Siųsti <span class="arr">→</span></button>
+            <button class="btn btn-red" type="submit">Siųsti žinutę <span class="arr" aria-hidden="true">→</span></button>
             <span class="form-msg" role="status"></span>
           </div>
         </form>
@@ -125,26 +126,35 @@
   <div class="wrap">
     <div class="foot-top">
       <div>
-        <p class="label">Turite klausimų?</p>
-        <h3>Parašyk mums bet kada.</h3>
+        <h2>Turi klausimų?</h2>
         <a class="mail" href="mailto:info@sostudy.lt">info@sostudy.lt</a>
       </div>
-      <div>
-        <p class="label">Puslapiai</p>
+      <nav aria-label="Puslapiai">
+        <p class="foot-h">Puslapiai</p>
         <div class="foot-links">
-          <a href="/">Pagrindinis</a><a href="/apie-mus/">Apie mus</a><a href="/reikia-pagalbos/">Reikia pagalbos?</a><a href="/kontaktai/">Kontaktai</a>
+          <a href="/">Pagrindinis</a>
+          <a href="/apie-mus/">Apie mus</a>
+          <a href="/reikia-pagalbos/">Reikia pagalbos?</a>
+          <a href="/kontaktai/">Kontaktai</a>
+        </div>
+      </nav>
+      <div>
+        <p class="foot-h">Sek mus</p>
+        <div class="foot-links">
+          <a href="https://www.linkedin.com/company/sostudy-lt" target="_blank" rel="noopener" data-linkedin>LinkedIn</a>
+          <a href="https://www.instagram.com/sostudy.lt/" target="_blank" rel="noopener" data-instagram>Instagram</a>
         </div>
       </div>
       <div>
-        <p class="label">Sek mus</p>
+        <p class="foot-h">Teisinė informacija</p>
         <div class="foot-links">
-          <a href="https://www.linkedin.com/company/sostudy" target="_blank" rel="noopener" data-linkedin>LinkedIn ↗</a>
-          <a href="/apie-mus/#kelione">Mūsų kelionė</a>
+          <a href="/privatumo-politika/">Privatumo politika</a>
+          <a href="/naudojimosi-taisykles/">Naudojimosi taisyklės</a>
         </div>
       </div>
     </div>
-    <canvas id="wordmark" aria-label="SOStudy" role="img"></canvas>
-    <div class="foot-bottom label"><span>© <span data-year>2026</span> SOStudy. Visos teisės saugomos.</span><span>Kaunas · KTU Startup Space</span></div>
+    <canvas id="wordmark" role="img" aria-label="SOStudy"></canvas>
+    <div class="foot-bottom"><span>© <span data-year>2026</span> SOStudy</span><span>Kaunas</span></div>
   </div>
 </footer>
 
