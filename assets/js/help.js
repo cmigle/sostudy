@@ -119,7 +119,7 @@
     people.forEach((p, i) => p.classList.toggle("on", i < a.freeCount));
     if (a.state === "free") {
       state.textContent = "Laisva";
-      sub.innerHTML = `${a.freeCount > 1 ? "Šiuo metu laisvos abi korepetitorės" : "Šiuo metu laisva viena korepetitorė"}${a.until ? `, bent iki <strong>${a.hm(a.until)}</strong>` : ""}. Užpildyk formą ir atsakysime per kelias minutes.`;
+      sub.innerHTML = `${a.freeCount > 1 ? "Šiuo metu laisvi abu korepetitoriai" : "Šiuo metu laisvas vienas korepetitorius"}${a.until ? `, bent iki <strong>${a.hm(a.until)}</strong>` : ""}. Užpildyk formą ir atsakysime per kelias minutes.`;
     } else if (a.state === "busy") {
       state.textContent = "Užimta";
       sub.innerHTML = a.next
