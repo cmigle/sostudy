@@ -8,6 +8,12 @@
     const dot = Object.assign(document.createElement("div"), { className: "cursor" });
     const ring = Object.assign(document.createElement("div"), { className: "cursor-ring", innerHTML: "<span></span>" });
     document.body.append(dot, ring);
+    // Keep the cursor above modal dialogs (they live in the browser top layer).
+    const lift = () => {
+      if (!dot.showPopover) return;
+      [dot, ring].forEach(el => { el.setAttribute("popover", "manual"); if (el.matches(":popover-open")) el.hidePopover(); el.showPopover(); });
+    };
+    new MutationObserver(() => lift()).observe(document.body, { subtree: true, attributes: true, attributeFilter: ["open"] });
     const txt = ring.firstChild;
     let x = -100, y = -100, rx = x, ry = y, running = false;
     const loop = () => {
@@ -114,7 +120,11 @@
     let text = "Parašyk mums";
     if (a.state === "free") text = "Galime padėti dabar";
     else if (a.state === "busy") text = a.next ? `Laisva ${a.label(a.next)}` : "Šiuo metu užimta";
-    pills.forEach(p => { p.dataset.state = a.state; p.querySelector("[data-status-text]").textContent = text; });
+    pills.forEach(p => {
+      p.dataset.state = a.state;
+      const t = p.querySelector("[data-status-text]");
+      if (t) t.textContent = text; else p.title = text;
+    });
     await ready;
     document.dispatchEvent(new CustomEvent("sos:availability", { detail: a }));
   }
