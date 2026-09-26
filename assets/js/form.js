@@ -63,7 +63,7 @@
           msg.textContent = "Žinutę gavome. Atsakysime el. paštu.";
         }
       } catch (err) {
-        msg.textContent = "Nepavyko išsiųsti. Patikrink interneto ryšį ir bandyk dar kartą arba rašyk info@sostudy.lt.";
+        msg.textContent = "Nepavyko išsiųsti. Patikrink interneto ryšį ir bandyk dar kartą arba rašyk sostudy.klausk@gmail.com.";
         msg.classList.add("err");
         console.error(err);
       } finally {
