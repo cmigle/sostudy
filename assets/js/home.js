@@ -20,7 +20,8 @@
   const driveCar = document.getElementById("driveCar");
   gsap.timeline({ scrollTrigger: { trigger: ".drive", start: "top top", end: "bottom bottom", scrub: .6, invalidateOnRefresh: true } })
     .fromTo(driveCar, { x: () => innerWidth + 40 }, { x: () => -driveCar.offsetWidth - 40, ease: "none" }, 0)
-    .fromTo(".road", { backgroundPositionX: 0 }, { backgroundPositionX: -900, ease: "none" }, 0);
+    .fromTo(".road", { backgroundPositionX: 0 }, { backgroundPositionX: -900, ease: "none" }, 0)
+    .to("#driveCar .wheel", { rotation: -1440, transformOrigin: "50% 50%", ease: "none" }, 0);
 
   /* ---------- Steps: pinned sideways scroll, only when there is room ---------- */
   ScrollTrigger.matchMedia({
