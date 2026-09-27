@@ -2,7 +2,7 @@
 // Sends form submissions (with the optional photo attached) to the founders.
 // Nothing is written to disk: the upload lives in PHP's temp dir only for this request.
 
-$TO   = ['evelina@example.com', 'aiste@example.com'];   // founders' inboxes
+$TO   = ['sostudy.klausk@gmail.com'];                  // where submissions arrive
 $FROM = 'no-reply@sostudy.lt';                           // must be a sostudy.lt address
 $MAX_BYTES = 10 * 1024 * 1024;
 $ALLOWED = ['image/jpeg', 'image/png', 'image/webp', 'image/heic', 'image/heif', 'image/gif'];
