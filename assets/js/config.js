@@ -5,6 +5,7 @@ window.SOS = {
   formEndpoint: "/send.php",
 
   // Google Apps Script /exec URLs, one per founder (see apps-script/README.md).
+  // Kept out of git: set them in config.local.js (copy config.local.example.js).
   calendarEndpoints: [],
 
   // Shortest window (minutes) still worth offering to a student.
