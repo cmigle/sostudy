@@ -428,6 +428,21 @@ section { position: relative; }
 .week-cells i { aspect-ratio: 1; border-radius: 50%; background: rgba(239, 237, 231, .12); }
 .week-cells i.on { background: var(--green); }
 .week-cells i.now { box-shadow: 0 0 0 2px var(--red); }
+.week-cells i[data-t] { cursor: pointer; transition: transform .15s var(--ease), background .15s; }
+.week-cells i[data-t]:hover { transform: scale(1.5); }
+.week-cells i.picked { background: var(--on-night); box-shadow: 0 0 0 2px var(--red); transform: scale(1.35); }
+.week-hint { margin: 10px 0 0; font-size: 13px; color: var(--on-night-2); }
+.own { margin-top: 22px; }
+.own .slots-h { display: block; margin: 0 0 10px; }
+.own input {
+  width: 100%; min-height: 48px; padding: 10px 14px; border-radius: var(--r-in);
+  border: 1.5px solid rgba(239, 237, 231, .3); background: transparent; color: var(--on-night);
+  font: 600 var(--fs-2)/1.2 var(--f-body); color-scheme: dark;
+}
+.own input:hover { border-color: rgba(239, 237, 231, .6); }
+.own input:focus { outline: 2px solid var(--red); outline-offset: 2px; border-color: var(--on-night); }
+.own-note { margin: 10px 0 0; font-size: var(--fs-1); color: var(--on-night-2); }
+.req { color: var(--red-ink); font-weight: 600; }
 .week-axis { display: flex; justify-content: space-between; margin-left: 36px; font-size: 12px; color: var(--on-night-2); }
 
 .slots-h { margin: 26px 0 0; font-size: var(--fs-2); color: var(--on-night-2); }

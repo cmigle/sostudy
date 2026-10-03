@@ -57,22 +57,53 @@
     if (f) take(f);
   });
 
-  /* ---------- Preferred time ---------- */
+  /* ---------- Preferred time: suggested slot, a green circle or the student's own time ---------- */
   const laikas = document.getElementById("laikas");
   const chosen = document.getElementById("chosen");
   const chosenText = document.getElementById("chosenText");
-  function pick(btn) {
-    document.querySelectorAll(".slot").forEach(b => b.setAttribute("aria-pressed", b === btn));
-    if (btn) {
-      laikas.value = btn.dataset.label;
-      chosenText.textContent = btn.dataset.label;
-      chosen.classList.add("on");
-    } else {
+  const own = document.getElementById("ownTime");
+  const ownNote = document.getElementById("ownNote");
+  const label = t => { const l = SOSAvailability.label(t); return l.charAt(0).toUpperCase() + l.slice(1); };
+  let windows = [], picked = null;
+
+  function highlight() {
+    document.querySelectorAll(".slot").forEach(b => b.setAttribute("aria-pressed", picked !== null && +b.dataset.t === picked));
+    document.querySelectorAll(".week-cells i[data-t]").forEach(c => c.classList.toggle("picked", picked !== null && picked >= +c.dataset.t && picked < +c.dataset.t + 18e5));
+  }
+  function pick(t, fromOwn) {
+    picked = t;
+    if (!fromOwn) own.value = "";
+    ownNote.hidden = true;
+    if (t === null) {
       laikas.value = "Kuo greičiau";
       chosen.classList.remove("on");
+    } else {
+      laikas.value = label(t);
+      chosenText.textContent = label(t);
+      chosen.classList.add("on");
+      if (fromOwn && windows.length && !windows.some(([a, b]) => t >= a && t < b)) {
+        ownNote.textContent = "Šiuo laiku korepetitoriai pagal kalendorių užimti, bet pabandysime prisitaikyti. Laiką patvirtinsime el. paštu.";
+        ownNote.hidden = false;
+      }
     }
+    highlight();
   }
   document.getElementById("chosenClear").addEventListener("click", () => pick(null));
+
+  const pad = n => String(n).padStart(2, "0");
+  const localValue = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  own.min = localValue(new Date());
+  own.addEventListener("change", () => {
+    if (!own.value) return pick(null);
+    const t = new Date(own.value).getTime();
+    if (isNaN(t)) return;
+    if (t < Date.now() - 6e4) {
+      ownNote.textContent = "Šis laikas jau praėjo. Pasirink vėlesnį.";
+      ownNote.hidden = false;
+      return;
+    }
+    pick(t, true);
+  });
 
   /* ---------- Availability panel ---------- */
   const av = document.getElementById("av");
@@ -94,7 +125,7 @@
     return Date.UTC(p.year, p.month - 1, p.day) - offset;
   }
 
-  function drawWeek(windows) {
+  function drawWeek() {
     week.querySelectorAll(".week-row").forEach(r => r.remove());
     const now = Date.now();
     const axis = week.querySelector(".week-axis");
@@ -105,14 +136,24 @@
       let cells = "";
       for (let i = 0; i < 28; i++) {
         const s = mid + (8 + i / 2) * 36e5, e = s + 18e5;
-        const on = windows.some(([a, b]) => a < e && b > s);
-        cells += `<i class="${on ? "on" : ""}${now >= s && now < e ? " now" : ""}"></i>`;
+        const w = windows.find(([a, b]) => a < e && b > s);
+        const isNow = now >= s && now < e;
+        // clickable start: the later of the cell start, the window start and now (rounded up to 5 min)
+        const start = w ? Math.ceil(Math.max(s, w[0], now) / 3e5) * 3e5 : 0;
+        cells += w && start < e
+          ? `<i class="on${isNow ? " now" : ""}" data-t="${start}" title="${label(start)}"></i>`
+          : `<i class="${isNow ? "now" : ""}"></i>`;
       }
       row.innerHTML = `<span>${DAY[new Date(mid + 12 * 36e5).getUTCDay()]}</span><div class="week-cells">${cells}</div>`;
       week.insertBefore(row, axis);
     }
     week.hidden = false;
+    highlight();
   }
+  week.addEventListener("click", e => {
+    const c = e.target.closest("i[data-t]");
+    if (c) pick(+c.dataset.t === picked ? null : +c.dataset.t);
+  });
 
   document.addEventListener("sos:availability", ({ detail: a }) => {
     av.dataset.state = a.state;
@@ -124,7 +165,7 @@
       state.textContent = "Užimta";
       sub.innerHTML = a.next
         ? `Šiuo metu negalime atsakyti. Artimiausias laisvas laikas: <strong>${a.label(a.next)}</strong>. Gali pasirinkti laiką žemiau.`
-        : "Šią savaitę laisvo laiko neliko. Užpildyk formą ir susitarsime dėl laiko el. paštu.";
+        : "Šią savaitę laisvo laiko neliko. Nurodyk sau tinkamą laiką ir susitarsime el. paštu.";
     } else {
       state.textContent = "SOS";
       sub.textContent = a.error
@@ -132,17 +173,18 @@
         : "Užpildyk formą ir atsakysime kuo greičiau.";
     }
 
-    if (a.windows.length) drawWeek(a.windows);
+    windows = a.windows || [];
+    if (windows.length) drawWeek();
     slots.innerHTML = "";
     a.slots.forEach(s => {
       const b = document.createElement("button");
       b.type = "button"; b.className = "slot";
-      b.dataset.label = a.cap(s.label);
-      b.textContent = a.cap(s.label);
-      b.setAttribute("aria-pressed", laikas.value === b.dataset.label);
-      b.addEventListener("click", () => pick(b.getAttribute("aria-pressed") === "true" ? null : b));
+      b.dataset.t = s.t;
+      b.textContent = label(s.t);
+      b.addEventListener("click", () => pick(s.t === picked ? null : s.t));
       slots.append(b);
     });
     slotsWrap.hidden = !a.slots.length;
+    highlight();
   });
 })();
