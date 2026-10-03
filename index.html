@@ -167,10 +167,18 @@
     </div>
   </section>
 
-  <section id="kaip" aria-labelledby="kaip-h">
-    <div class="steps-pin">
-      <div class="wrap"><h2 class="sec-title" id="kaip-h">Kaip vyksta konsultacija</h2></div>
-      <div class="steps-track" id="stepsTrack">
+  <section class="sec" id="kaip" aria-labelledby="kaip-h">
+    <div class="wrap how">
+      <div class="how-intro">
+        <h2 class="sec-title reveal" id="kaip-h">Kaip vyksta konsultacija</h2>
+        <p class="muted reveal">Keturi žingsniai nuo užklausos iki atsakymo. Spausk kortelę arba rodykles.</p>
+        <div class="stack-nav reveal">
+          <button type="button" id="stackPrev" aria-label="Ankstesnis žingsnis">←</button>
+          <span class="stack-count" id="stackCount" aria-live="polite">1 / 4</span>
+          <button type="button" id="stackNext" aria-label="Kitas žingsnis">→</button>
+        </div>
+      </div>
+      <div class="stack reveal" id="stack" data-cursor="Toliau">
         <article class="step s1"><span class="dot" aria-hidden="true">1</span><div><h3>Aprašyk uždavinį</h3><p>Formoje įrašyk sąlygą arba tai, ko nesupranti. Gali pridėti nuotrauką iš sąsiuvinio ar vadovėlio.</p></div></article>
         <article class="step s2"><span class="dot" aria-hidden="true">2</span><div><h3>Pasirink laiką</h3><p>Puslapyje matyti, ar kas nors gali padėti dabar. Jei ne, pasirink artimiausią laisvą laiką.</p></div></article>
         <article class="step s3"><span class="dot" aria-hidden="true">3</span><div><h3>Gauk nuorodą</h3><p>Prieš konsultaciją el. paštu atsiųsime prisijungimo nuorodą. Jei laiško nėra, patikrink šlamšto aplanką.</p></div></article>
