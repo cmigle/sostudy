@@ -110,7 +110,7 @@
             <label class="field"><span>Pavardė</span><input name="pavarde" autocomplete="family-name"></label>
           </div>
           <div class="row2">
-            <label class="field"><span>El. paštas <b aria-hidden="true">*</b></span><input type="email" name="email" required autocomplete="email" inputmode="email"></label>
+            <label class="field"><span>El. paštas <b aria-hidden="true">*</b></span><input type="email" name="email" required pattern="[^@\s]+@[^@\s]+\.[^@\s]{2,}" autocomplete="email" inputmode="email"></label>
             <label class="field"><span>Klasė</span>
               <select name="klase">
                 <option value="">Pasirink</option>

@@ -3,7 +3,7 @@
   function message(el) {
     if (el.type === "checkbox") return "Pažymėk, kad sutinki. Kitaip negalėsime atsakyti.";
     if (el.validity.valueMissing) return "Šį lauką reikia užpildyti.";
-    if (el.validity.typeMismatch) return "Patikrink el. pašto adresą, pvz., vardas@gmail.com.";
+    if (el.validity.typeMismatch || el.validity.patternMismatch) return "Patikrink el. pašto adresą, pvz., vardas@gmail.com.";
     return el.validationMessage;
   }
   function mark(el) {

@@ -492,7 +492,7 @@ section { position: relative; }
 .field > span { position: absolute; left: 17px; top: 9px; font-size: 13px; font-weight: 600; color: var(--ink-2); pointer-events: none; }
 .field > span b { color: var(--red-ink); font-weight: 600; }
 .field.invalid input, .field.invalid textarea { border-color: var(--red); }
-.field .err { display: block; margin-top: 6px; font-size: var(--fs-1); color: var(--red-ink); }
+.field > .err, .check .err { position: static; display: block; margin: 6px 0 0 2px; font-size: var(--fs-1); font-weight: 600; line-height: 1.4; color: var(--red-ink); pointer-events: auto; }
 
 .drop {
   position: relative; display: grid; place-items: center; text-align: center;
