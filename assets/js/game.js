@@ -7,7 +7,12 @@
   const scoreEl = document.getElementById("score");
   const bestEl = document.getElementById("best");
   let W = 600, H = 260, GROUND = H - 18;
-  const GAP = 135, PW = 50, SPACING = 260, SPEED = 115, GRAV = 900, FLAP = -300;
+  const PW = 50, GRAV = 900, FLAP = -300;
+  // difficulty grows with the score: faster, narrower gaps, pillars closer together (capped at 40 points)
+  const level = () => Math.min(score || 0, 40) / 40;
+  const speed = () => 115 + 95 * level();
+  const gapSize = () => 135 - 40 * level();
+  const spacing = () => 260 - 50 * level();
   const KEY = "sos-best";
 
   let best = 0;
@@ -21,14 +26,16 @@
     pipes = [];
     score = 0;
     scoreEl.textContent = 0;
-    for (let i = 0; i < 4; i++) addPipe(W + 160 + i * SPACING);
+    for (let i = 0; i < 4; i++) addPipe(W + 160 + i * 260);
   }
   function addPipe(x) {
     // gaps stay near the middle and never jump too far from the previous one
-    const prev = pipes.length ? pipes[pipes.length - 1].top : (GROUND - GAP) / 2;
-    const lo = Math.max(30, prev - 70), hi = Math.min(GROUND - GAP - 30, prev + 70);
+    const gap = gapSize();
+    const prev = pipes.length ? pipes[pipes.length - 1].top : (GROUND - gap) / 2;
+    const jump = 70 + 40 * level();
+    const lo = Math.max(30, prev - jump), hi = Math.min(GROUND - gap - 30, prev + jump);
     const top = lo + Math.random() * (hi - lo);
-    pipes.push({ x, top, passed: false });
+    pipes.push({ x, top, gap, passed: false });
   }
 
   function flap() {
@@ -57,16 +64,16 @@
     car.y += car.v * dt;
     if (car.y < 16) { car.y = 16; car.v = Math.max(car.v, 0); } // the top edge doesn't end the game
     for (const p of pipes) {
-      p.x -= SPEED * dt;
+      p.x -= speed() * dt;
       if (!p.passed && p.x + PW < car.x - 22) {
         p.passed = true;
         scoreEl.textContent = ++score;
       }
     }
-    if (pipes[0].x < -PW) { pipes.shift(); addPipe(pipes[pipes.length - 1].x + SPACING); }
+    if (pipes[0].x < -PW) { pipes.shift(); addPipe(pipes[pipes.length - 1].x + spacing()); }
     // collisions, with a forgiving hitbox (smaller than the drawing)
     const hit = car.y + 12 > GROUND || pipes.some(p =>
-      car.x + 17 > p.x && car.x - 17 < p.x + PW && (car.y - 8 < p.top || car.y + 8 > p.top + GAP));
+      car.x + 17 > p.x && car.x - 17 < p.x + PW && (car.y - 8 < p.top || car.y + 8 > p.top + p.gap));
     if (hit) {
       state = "over"; t = 0;
       if (score > best) {
@@ -120,12 +127,12 @@
     ctx.clearRect(0, 0, W, H);
     for (const p of pipes) {
       drawPipe(p.x, 0, p.top, true);
-      drawPipe(p.x, p.top + GAP, GROUND - p.top - GAP, false);
+      drawPipe(p.x, p.top + p.gap, GROUND - p.top - p.gap, false);
     }
     // road
     ctx.strokeStyle = "rgba(239,237,231,.4)"; ctx.lineWidth = 2;
     ctx.setLineDash([16, 16]);
-    ctx.lineDashOffset = state === "play" ? (performance.now() / 1000 * SPEED) % 32 : 0;
+    ctx.lineDashOffset = state === "play" ? (performance.now() / 1000 * speed()) % 32 : 0;
     ctx.beginPath(); ctx.moveTo(0, GROUND + 1); ctx.lineTo(W, GROUND + 1); ctx.stroke();
     ctx.setLineDash([]);
     drawCar();
