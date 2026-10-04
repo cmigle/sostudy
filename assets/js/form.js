@@ -33,6 +33,8 @@
       if (r.d.error) console.warn(r.d.error);
     } catch (e) {}
     if (!S.formFallback) throw new Error("no fallback");
+    const photo = fd.get("nuotrauka");
+    if (photo && photo.size) return nativeFallback(fd, S.formFallback.replace("/ajax/", "/"));
     const alt = new FormData();
     for (const [k, v] of fd) {
       if (k === "_gotcha") { if (v) return; continue; }        // bot: drop quietly
@@ -49,6 +51,44 @@
       r = await post(S.formFallback, alt);
     }
     if (!(r.ok && String(r.d.success) === "true")) throw new Error(r.d.message || "fallback failed");
+  }
+
+  // FormSubmit only accepts files in a normal (page-changing) form post. The page comes back with ?issiusta=1.
+  function nativeFallback(fd, url) {
+    const f = Object.assign(document.createElement("form"), { method: "post", action: url, enctype: "multipart/form-data", hidden: true });
+    const add = (name, value) => f.append(Object.assign(document.createElement("input"), { type: "hidden", name, value }));
+    for (const [k, v] of fd) {
+      if (k === "_gotcha") { if (v) return new Promise(() => {}); continue; }
+      if (v instanceof File) {
+        const input = Object.assign(document.createElement("input"), { type: "file", name: "attachment" });
+        const dt = new DataTransfer(); dt.items.add(v); input.files = dt.files;
+        f.append(input);
+      } else add(k, v);
+    }
+    add("_replyto", fd.get("email") || "");
+    add("_template", "table");
+    add("_captcha", "false");
+    add("_next", location.origin + location.pathname + "?issiusta=1");
+    try { sessionStorage.setItem("sos-sent-email", fd.get("email") || ""); } catch (e) {}
+    document.body.append(f);
+    f.submit();
+    return new Promise(() => {}); // the page is leaving
+  }
+
+  // Coming back from FormSubmit: show the success screen
+  if (/[?&]issiusta=1/.test(location.search)) {
+    const form = document.querySelector("form.form[data-sent]");
+    const sent = form && document.getElementById(form.dataset.sent);
+    if (sent) {
+      let email = "";
+      try { email = sessionStorage.getItem("sos-sent-email") || ""; sessionStorage.removeItem("sos-sent-email"); } catch (e) {}
+      const em = sent.querySelector("[data-sent-email]");
+      if (em) { if (email) em.textContent = email; else em.replaceWith(", kurį nurodei"); }
+      form.hidden = true;
+      sent.classList.add("on");
+      history.replaceState(null, "", location.pathname);
+      requestAnimationFrame(() => sent.scrollIntoView({ block: "center" }));
+    }
   }
 
   document.querySelectorAll("form.form").forEach(form => {
