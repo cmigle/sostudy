@@ -27,6 +27,18 @@ assets/data/            Saved copy of LinkedIn posts (fallback)
 
 Fonts and scripts are self-hosted, so the only third-party requests are the Google availability check, the LinkedIn feed and LinkedIn post images.
 
+## Upload to Hostinger
+
+Needs a Hostinger **web hosting** plan (not Website Builder) with sostudy.lt attached.
+
+1. hPanel → **Security → SSL**: make sure SSL is active for sostudy.lt (the site redirects to https).
+2. hPanel → **Files → File Manager** → open `public_html` and delete the old files there.
+3. Upload these files and folders (or one zip of them, then right-click → Extract):
+   `.htaccess`, `index.html`, `404.html`, `robots.txt`, `sitemap.xml`, `send.php`, `assets/` (including `assets/js/config.local.js`), `apie-mus/`, `kontaktai/`, `reikia-pagalbos/`, `privatumo-politika/`, `naudojimosi-taisykles/`.
+   Do not upload `README.md`, `apps-script/` or anything starting with a dot other than `.htaccess`.
+4. Send a test message with a photo from both forms. If `send.php` cannot send, the forms fall back to FormSubmit automatically.
+5. Google Search Console → add sostudy.lt → submit `https://sostudy.lt/sitemap.xml`.
+
 ## Local preview
 
 ```
