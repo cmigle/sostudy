@@ -3,6 +3,9 @@ window.SOS = {
   // Where forms are sent. "/send.php" uses Hostinger (photo goes by email, nothing stored).
   // For Formspree, paste e.g. "https://formspree.io/f/abcdwxyz".
   formEndpoint: "/send.php",
+  // Used automatically when formEndpoint is unavailable (e.g. a local preview).
+  // The first message triggers a one-time activation email from FormSubmit to this address.
+  formFallback: "https://formsubmit.co/ajax/sostudy.klausk@gmail.com",
 
   // Google Apps Script /exec URLs, one per founder (see apps-script/README.md).
   // Kept out of git: set them in config.local.js (copy config.local.example.js).
