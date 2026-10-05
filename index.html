@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SOStudy · Greitoji mokslo pagalba</title>
+  <meta name="description" content="Įstrigai sprendžiant uždavinį? Greita, efektyvi pagalba matematikoje 1–12 klasių mokiniams. Mokėk tik už praleistą laiką.">
+  <meta property="og:title" content="SOStudy · Greitoji mokslo pagalba">
+  <meta property="og:description" content="Greita, efektyvi pagalba matematikoje. Atsakome per kelias minutes.">
+  <meta property="og:image" content="https://sostudy.lt/assets/img/car.png">
+  <meta name="theme-color" content="#ecebe6">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@700..900&family=Space+Grotesk:wght@400..700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <div class="head-bar">
+      <a href="/" class="logo" aria-label="SOStudy pradžia"><span class="sos">SOS</span>tudy</a>
+      <nav class="nav" id="nav">
+        <a href="/" aria-current="page">Pagrindinis</a>
+        <a href="/apie-mus/">Apie mus</a>
+        <a href="/reikia-pagalbos/">Reikia pagalbos?</a>
+        <a href="/kontaktai/">Kontaktai</a>
+        <a href="/reikia-pagalbos/" class="status-pill" data-status><span class="status-dot"></span><span>Tikrinama…</span></a>
+      </nav>
+      <a href="/reikia-pagalbos/" class="status-pill" data-status><span class="status-dot"></span><span>Tikrinama…</span></a>
+      <button class="burger" aria-label="Meniu" aria-expanded="false" aria-controls="nav"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero dotgrid">
+    <canvas id="globe" aria-hidden="true"></canvas>
+    <div class="wrap hero-grid">
+      <div>
+        <p class="label reveal"><b>●</b> Greitoji mokslo pagalba · Matematika 1–12 kl.</p>
+        <h1 class="split" style="margin-top:18px">Įstrigai prie <span class="dot">uždavinio?</span></h1>
+        <p class="hero-sub reveal">Iškviesk <strong>greitąją mokslo pagalbą</strong>: gyvas korepetitorius paaiškins per kelias minutes. Moki tik už praleistą laiką.</p>
+        <div class="hero-cta reveal">
+          <a href="/reikia-pagalbos/" class="btn btn-red btn-siren">Kviesti pagalbą <span class="arr">→</span></a>
+          <a href="#kaip" class="btn btn-ghost">Kaip tai veikia</a>
+        </div>
+      </div>
+      <div class="car-stage" data-cursor="SOS!">
+        <div class="car-3d" id="car3d">
+          <div class="siren-glow"></div>
+          <img src="/assets/img/car.png" alt="SOStudy greitosios pagalbos automobilis su abiturientų kepure" width="900" height="737">
+          <span class="car-tag t1"><b>●</b> Atsakome per min.</span>
+          <span class="car-tag t2">10 min <b>nemokamai</b></span>
+          <span class="car-tag t3">1–12 klasės</span>
+        </div>
+      </div>
+    </div>
+    <div class="wrap hero-meta">
+      <div class="clock-wrap">
+        <p class="label">Vilnius, dabar</p>
+        <div class="clock dot" data-clock>00:00:00</div>
+      </div>
+      <a href="#kodel" class="scroll-hint label">Slink žemyn <i></i></a>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="dot">MATEMATIKA</span><span>Momentinė pagalba</span><span class="dot">1–12 KL.</span><span>Profesionalūs korepetitoriai</span><span class="dot">SOS</span><span>Moki tik už laiką</span>
+      <span class="dot">MATEMATIKA</span><span>Momentinė pagalba</span><span class="dot">1–12 KL.</span><span>Profesionalūs korepetitoriai</span><span class="dot">SOS</span><span>Moki tik už laiką</span>
+    </div>
+  </div>
+
+  <!-- WHY US -->
+  <section class="sec" id="kodel">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">[01] <b>Kodėl mes?</b></p>
+        <h2 class="split">Greita ir kokybiška pagalba matematikos uždaviniuose.</h2>
+      </div>
+      <div class="cards">
+        <article class="card reveal" data-tilt="6">
+          <span class="num">[ 01 ]</span>
+          <svg class="glyph" data-glyph="bolt" viewBox="0 0 9 9" aria-hidden="true"></svg>
+          <h3>Momentinė pagalba</h3>
+          <p>Nereikia laukti savaitės iki pamokos. Į užklausas atsakome per kelias minutes, dažniausiai iškart.</p>
+        </article>
+        <article class="card reveal" data-tilt="6" style="transition-delay:.08s">
+          <span class="num">[ 02 ]</span>
+          <svg class="glyph" data-glyph="clock" viewBox="0 0 9 9" aria-hidden="true"></svg>
+          <h3>Mokėjimas už praleistą laiką</h3>
+          <p>Kam mokėti už visą valandą, kai užtenka 10 minučių paaiškinimo? Moki tik už tiek, kiek realiai prireikė.</p>
+        </article>
+        <article class="card reveal" data-tilt="6" style="transition-delay:.16s">
+          <span class="num">[ 03 ]</span>
+          <svg class="glyph" data-glyph="cap" viewBox="0 0 9 9" aria-hidden="true"></svg>
+          <h3>Profesionalūs korepetitoriai</h3>
+          <p>Paaiškiname taip, kad suprastum, o ne tik nusirašytum. Ir taip, kad sprendimas atitiktų mokyklos standartus.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DRIVE SCENE -->
+  <section class="drive night" aria-label="Pagalba atvažiuoja">
+    <div class="drive-sticky dotgrid">
+      <div class="drive-text">
+        <p class="label" style="margin-bottom:20px">[02] <b>Iškvietimas</b></p>
+        <h2>Pagalba atvažiuoja per <em>kelias minutes</em>, ne per savaitę.</h2>
+        <div class="drive-meter">
+          <span class="dot" id="eta">00:00</span>
+          <span class="label">iki atsakymo</span>
+        </div>
+      </div>
+      <div class="road"></div>
+      <div class="drive-car" id="driveCar"><img src="/assets/img/car.png" alt="" width="900" height="737"></div>
+    </div>
+  </section>
+
+  <!-- WHY NOT AI -->
+  <section class="sec night">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">[03] <b>Kodėl ne dirbtinis intelektas?</b></p>
+        <h2 class="split">DI atsako. Mes paaiškiname.</h2>
+      </div>
+      <div class="compare">
+        <p class="compare-lead reveal">Dažnai DI nesupranta, <mark>kokios žinių spragos kartojasi</mark>. DI taip pat ne visada gali tiksliai parodyti, į ką verta atkreipti dėmesį, kad gautum <mark>pilną taškų skaičių</mark> ir tavo sprendimas atitiktų mokyklų standartus.</p>
+        <div class="vs reveal" role="table" aria-label="DI ir SOStudy palyginimas">
+          <div class="vs-row label" role="row"><span role="columnheader"></span><span role="columnheader">DI</span><span role="columnheader" style="color:var(--red)">SOS</span></div>
+          <div class="vs-row" role="row"><span role="cell">Pastebi pasikartojančias spragas</span><span class="no" role="cell" aria-label="ne">✕</span><span class="yes" role="cell" aria-label="taip">●</span></div>
+          <div class="vs-row" role="row"><span role="cell">Parodo, už ką skiriami taškai</span><span class="no" role="cell" aria-label="ne">✕</span><span class="yes" role="cell" aria-label="taip">●</span></div>
+          <div class="vs-row" role="row"><span role="cell">Sprendimas pagal mokyklos standartus</span><span class="no" role="cell" aria-label="ne visada">~</span><span class="yes" role="cell" aria-label="taip">●</span></div>
+          <div class="vs-row" role="row"><span role="cell">Gali paklausti „o kodėl?“</span><span class="no" role="cell" aria-label="ne">✕</span><span class="yes" role="cell" aria-label="taip">●</span></div>
+          <div class="vs-row" role="row"><span role="cell">Gyvas žmogus, kuris tavimi tiki</span><span class="no" role="cell" aria-label="ne">✕</span><span class="yes" role="cell" aria-label="taip">●</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="sec steps" id="kaip">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">[04] <b>Kaip tai veikia</b></p>
+        <h2 class="split">Keturi žingsniai iki „aaa, dabar supratau“.</h2>
+      </div>
+    </div>
+    <div class="steps-track" id="stepsTrack">
+      <article class="step s1"><span class="big dot">01</span><div><h3>Aprašyk arba nufotografuok</h3><p>Užpildyk formą: uždavinio sąlyga ar konkretus neaiškumas. Gali pridėti nuotrauką iš sąsiuvinio.</p></div></article>
+      <article class="step s2"><span class="big dot">02</span><div><h3>Pasižiūrėk, kas laisvas</h3><p>Matai gyvai, ar kas nors gali padėti dabar. Jei ne, pasirink artimiausią laisvą laiką.</p></div></article>
+      <article class="step s3"><span class="big dot">03</span><div><h3>Gauk nuorodą el. paštu</h3><p>Prieš sesiją atsiųsime prisijungimo nuorodą. Nepasiekė? Patikrink šlamšto aplanką.</p></div></article>
+      <article class="step s4"><span class="big dot">04</span><div><h3>Spręskite kartu</h3><p>Trumpa, tiksli sesija. Dabar testuojame, todėl iki 10 minučių pagalbos yra nemokamos.</p></div></article>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat reveal"><span class="dot">1–12</span><p class="label">klasių mokiniams</p></div>
+        <div class="stat reveal"><span class="dot" style="color:var(--red)">10</span><p class="label">minučių nemokamai testavimo metu</p></div>
+        <div class="stat reveal"><span class="dot" style="color:var(--green-deep)">2</span><p class="label">įkūrėjos, KTU studentės</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec" id="duk" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">[05] <b>D.U.K.</b></p>
+        <h2 class="split">Dažniausi klausimai</h2>
+      </div>
+      <div class="faq">
+        <details><summary><span class="mono">01</span>Kiek laiko atsakome?</summary><div class="ans">Į užklausas atsakome per kelias minutes, dažniausiai iškart. Puslapyje „Reikia pagalbos?“ gyvai matai, ar kas nors laisvas dabar.</div></details>
+        <details><summary><span class="mono">02</span>Kokie dalykai prieinami?</summary><div class="ans">Šiuo metu teikiame pagalbą tik matematikos užduotyse, 1–12 klasėms.</div></details>
+        <details><summary><span class="mono">03</span>Kaip prisijungti prie pamokos?</summary><div class="ans">Gauni nuorodą el. paštu prieš sesiją.</div></details>
+        <details><summary><span class="mono">04</span>Ką daryti, jei laiškas nepasiekė?</summary><div class="ans">Patikrink šlamšto aplanką arba susisiek su mumis per <a href="mailto:info@sostudy.lt" style="text-decoration:underline">info@sostudy.lt</a>.</div></details>
+        <details><summary><span class="mono">05</span>Ar galiu atsiųsti uždavinio nuotrauką?</summary><div class="ans">Taip. Nuotrauka keliauja tiesiai mums el. paštu ir niekur kitur nesaugoma.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="sec cta-band dotgrid">
+    <div class="wrap">
+      <p class="label" style="margin-bottom:24px"><b>●</b> Nelauk kitos pamokos</p>
+      <h2 class="split">Siųsk <span class="dot">SOS.</span></h2>
+      <a href="/reikia-pagalbos/" class="btn btn-red btn-siren">Reikia pagalbos <span class="arr">→</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <p class="label">Turite klausimų?</p>
+        <h3>Parašyk mums bet kada.</h3>
+        <a class="mail" href="mailto:info@sostudy.lt">info@sostudy.lt</a>
+      </div>
+      <div>
+        <p class="label">Puslapiai</p>
+        <div class="foot-links">
+          <a href="/">Pagrindinis</a><a href="/apie-mus/">Apie mus</a><a href="/reikia-pagalbos/">Reikia pagalbos?</a><a href="/kontaktai/">Kontaktai</a>
+        </div>
+      </div>
+      <div>
+        <p class="label">Sek mus</p>
+        <div class="foot-links">
+          <a href="https://www.linkedin.com/company/sostudy" target="_blank" rel="noopener" data-linkedin>LinkedIn ↗</a>
+          <a href="/apie-mus/#kelione">Mūsų kelionė</a>
+        </div>
+      </div>
+    </div>
+    <canvas id="wordmark" aria-label="SOStudy" role="img"></canvas>
+    <div class="foot-bottom label"><span>© <span data-year>2026</span> SOStudy. Visos teisės saugomos.</span><span>Kaunas · KTU Startup Space</span></div>
+  </div>
+</footer>
+
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/availability.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="/assets/js/home.js" defer></script>
+<script type="module" src="/assets/js/globe.js"></script>
+</body>
+</html>
