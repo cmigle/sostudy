@@ -88,7 +88,7 @@ p { margin: 0 0 1em; text-wrap: pretty; }
     linear-gradient(90deg, rgba(30, 26, 23, .07) 1px, transparent 1px);
   background-size: 100% 100%, 20px 20px, 20px 20px;
 }
-@media (max-width: 700px) { .notebook { --margin: 8px; } }
+@media (max-width: 900px) { .notebook { --margin: 8px; } }
 
 .night { background: var(--night); color: var(--on-night); }
 .night .muted { color: var(--on-night-2); }
@@ -241,6 +241,9 @@ section { position: relative; }
   .car-stage { order: 0; width: min(100%, 64vh * 1.22); }
   .hero h1 { font-size: clamp(30px, 10vh, 60px); }
   .hero-sub { font-size: var(--fs-2); margin: 12px 0 18px; }
+  .hero-cta .btn { min-height: 44px; padding: 10px 16px; }
+  .head-bar { padding: 4px 4px 4px 14px; }
+  .head-bar .status-pill, .burger { min-height: 40px; height: 40px; }
 }
 
 /* ============ Why us (list, not cards) ============ */
@@ -272,11 +275,11 @@ section { position: relative; }
 /* ============ Drive (scroll scene) ============ */
 .drive { height: 260vh; }
 .drive-sticky { position: sticky; top: 0; height: 100svh; height: 100dvh; overflow: hidden; display: grid; place-items: center; }
-.drive-text { position: relative; z-index: 2; width: 100%; max-width: 1040px; padding-inline: var(--gut-l) var(--gut-r); margin-top: -14vh; }
+.drive-text { position: relative; z-index: 2; width: 100%; max-width: 1040px; padding-inline: var(--gut-l) var(--gut-r); margin-top: -26vh; }
 .drive-text h2 { font-size: var(--fs-6); max-width: 20ch; }
 .drive-text p { margin: 18px 0 0; font-size: var(--fs-4); color: var(--on-night-2); max-width: 40ch; }
 .road { position: absolute; left: 0; right: 0; bottom: 12vh; height: 2px; background-image: repeating-linear-gradient(90deg, rgba(239, 237, 231, .45) 0 28px, transparent 28px 56px); }
-.drive-car { position: absolute; left: 0; bottom: calc(12vh - 4px); width: clamp(200px, 32vw, 460px); z-index: 3; will-change: transform; }
+.drive-car { position: absolute; left: 0; bottom: calc(12vh - 4px); width: clamp(180px, min(26vw, 40vh), 380px); z-index: 3; will-change: transform; }
 .drive-car img { width: 100%; height: auto; }
 @media (max-width: 700px) { .drive { height: 200vh; } }
 @media (orientation: landscape) and (max-height: 560px) {
@@ -290,7 +293,7 @@ section { position: relative; }
 /* ============ Steps (horizontal) ============ */
 .steps-pin { min-height: 100svh; min-height: 100dvh; display: flex; flex-direction: column; justify-content: center; padding-block: clamp(72px, 10vh, 120px); overflow: hidden; }
 .steps-pin .sec-title { margin-bottom: clamp(24px, 4vh, 48px); }
-.steps-track { display: flex; gap: 16px; padding-inline: var(--gut-l) var(--gut-r); width: max-content; }
+.steps-track { display: flex; gap: 16px; padding-inline: max(var(--gut-l), calc((100vw - var(--max)) / 2)) max(var(--gut-r), calc((100vw - var(--max)) / 2)); width: max-content; }
 .step {
   width: min(70vw, 460px); min-height: min(50vh, 400px); flex: none;
   padding: clamp(22px, 3vw, 32px); border-radius: var(--r);
@@ -372,7 +375,7 @@ section { position: relative; }
 @media (orientation: landscape) and (max-height: 560px) { .page-hero { padding-top: calc(100px + env(safe-area-inset-top)); } }
 
 /* ============ Legal ============ */
-.prose { max-width: 70ch; padding-bottom: clamp(72px, 10vw, 140px); }
+.prose { max-width: 70ch; padding-block: clamp(40px, 6vw, 72px) clamp(72px, 10vw, 140px); }
 .prose h2 { font-size: var(--fs-5); margin: 48px 0 14px; }
 .prose h2:first-child { margin-top: 0; }
 .prose ul { padding-left: 1.2em; margin: 0 0 1em; }
@@ -489,7 +492,7 @@ section { position: relative; }
 .facts { margin-top: 20px; padding-left: 1.1em; color: var(--ink-2); }
 .facts li { margin-bottom: .3em; }
 
-.team { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; perspective: 1400px; }
+.team { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; perspective: 1400px; max-width: 920px; }
 @media (max-width: 640px) { .team { grid-template-columns: 1fr; } }
 .member { border-radius: var(--r); overflow: hidden; background: var(--paper-2); transform-style: preserve-3d; transition: transform .5s var(--ease); }
 .member .ph { aspect-ratio: 4 / 4.4; overflow: hidden; }
