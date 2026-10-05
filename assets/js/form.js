@@ -22,7 +22,7 @@
   }
 
   document.querySelectorAll("form.form").forEach(form => {
-    const msg = form.querySelector(".form-msg");
+    const msg = form.querySelector(".form-foot .form-msg");
     const btn = form.querySelector("[type=submit]");
     const btnText = btn.innerHTML;
     const sent = form.dataset.sent ? document.getElementById(form.dataset.sent) : null;
@@ -50,7 +50,7 @@
           method: "POST", body: fd, headers: { Accept: "application/json" }
         });
         const data = await res.json().catch(() => ({}));
-        if (!res.ok || data.ok === false) throw new Error(data.error || res.status);
+        if (!res.ok || data.ok !== true) throw new Error(data.error || res.status);
         if (sent) {
           const em = sent.querySelector("[data-sent-email]");
           if (em) em.textContent = fd.get("email");
