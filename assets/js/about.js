@@ -1,5 +1,5 @@
 (() => {
-  /* ---------- Manifesto: words light up as you scroll ---------- */
+  /* ---------- Mission sentence lights up word by word as you scroll ---------- */
   const m = document.getElementById("manifesto");
   if (m) {
     const words = [];
@@ -19,12 +19,21 @@
     });
     const update = () => {
       const r = m.getBoundingClientRect();
-      const p = Math.min(1, Math.max(0, (innerHeight * .85 - r.top) / (r.height + innerHeight * .35)));
+      const p = Math.min(1, Math.max(0, (innerHeight * .85 - r.top) / (r.height + innerHeight * .3)));
       const lit = Math.round(p * words.length);
       words.forEach((w, i) => w.classList.toggle("lit", i < lit));
     };
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) words.forEach(w => w.classList.add("lit"));
-    else { addEventListener("scroll", update, { passive: true }); update(); }
+    else {
+      let active = false, ticking = false;
+      const onScroll = () => {
+        if (!active || ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      };
+      new IntersectionObserver(([e]) => { active = e.isIntersecting; if (active) update(); }).observe(m);
+      addEventListener("scroll", onScroll, { passive: true });
+    }
   }
 
   /* ---------- Articles ---------- */
@@ -38,16 +47,20 @@
     d.addEventListener("click", e => { if (e.target === d) d.close(); });
     d.addEventListener("close", () => history.replaceState(null, "", location.pathname + "#kelione"));
   });
-  const deep = location.hash && document.querySelector(`dialog${location.hash}`);
-  if (deep) deep.showModal();
+  const deep = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (deep && deep.tagName === "DIALOG") deep.showModal();
 
-  /* ---------- LinkedIn posts ---------- */
+  /* ---------- LinkedIn posts: load only after a click (LinkedIn sets cookies) ---------- */
   const grid = document.getElementById("liGrid");
+  const loadBtn = document.getElementById("liLoad");
   const posts = (window.SOS && SOS.linkedinPosts) || [];
-  if (grid && posts.length) {
-    grid.innerHTML = posts.map(urn =>
-      `<iframe src="https://www.linkedin.com/embed/feed/update/${encodeURIComponent(urn).replace(/%3A/g, ":")}?collapsed=1" height="560" loading="lazy" title="SOStudy LinkedIn įrašas" allowfullscreen></iframe>`
-    ).join("");
-    document.getElementById("liEmpty").style.marginTop = "18px";
+  if (grid && loadBtn && posts.length) {
+    loadBtn.hidden = false;
+    loadBtn.addEventListener("click", () => {
+      grid.innerHTML = posts.map(urn =>
+        `<iframe src="https://www.linkedin.com/embed/feed/update/${urn}?collapsed=1" height="560" loading="lazy" title="SOStudy įrašas „LinkedIn“" allowfullscreen></iframe>`
+      ).join("");
+      loadBtn.remove();
+    });
   }
 })();
