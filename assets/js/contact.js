@@ -1,6 +1,11 @@
 (() => {
-  const email = (window.SOS && SOS.email) || "info@sostudy.lt";
-  document.querySelectorAll("[data-email]").forEach(a => { a.href = "mailto:" + email; a.textContent = email; });
+  const email = (window.SOS && SOS.email) || "sostudy.klausk@gmail.com";
+  document.querySelectorAll("[data-email]").forEach(a => {
+    a.href = "mailto:" + email;
+    const [user, domain] = email.split("@");
+    a.textContent = user + "@";
+    a.append(document.createElement("wbr"), domain);
+  });
   document.getElementById("gmail").href = "https://mail.google.com/mail/?view=cm&to=" + encodeURIComponent(email);
 
   const toast = Object.assign(document.createElement("div"), { className: "toast" });
