@@ -135,6 +135,7 @@
 
   /* ---------- Availability pill ---------- */
   const pills = document.querySelectorAll("[data-status]");
+  const ready = new Promise(r => document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", r) : r());
   async function refresh() {
     if (!window.SOSAvailability) return;
     const a = await SOSAvailability.get();
@@ -142,6 +143,7 @@
     if (a.state === "free") text = a.freeCount > 1 ? `${a.freeCount} laisvi dabar` : "Laisva dabar";
     else if (a.state === "busy") text = a.next ? `Laisva ${a.label(a.next).toLowerCase()}` : "Šiuo metu užimta";
     pills.forEach(p => { p.dataset.state = a.state; p.querySelector("span:last-child").textContent = text; });
+    await ready;
     document.dispatchEvent(new CustomEvent("sos:availability", { detail: a }));
   }
   refresh();
