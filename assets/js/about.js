@@ -36,6 +36,23 @@
     }
   }
 
+  /* ---------- Team cards flip to show experience ---------- */
+  document.querySelectorAll("[data-flip]").forEach(card => {
+    const front = card.querySelector(".front"), back = card.querySelector(".back");
+    const toggle = card.querySelector(".front .flip-btn");
+    const set = on => {
+      card.classList.toggle("flipped", on);
+      front.inert = on; back.inert = !on;
+      toggle.setAttribute("aria-expanded", on);
+      (on ? back.querySelector("a") : toggle).focus({ preventScroll: true });
+    };
+    back.inert = true;
+    card.addEventListener("click", e => {
+      if (e.target.closest("a")) return;
+      set(!card.classList.contains("flipped"));
+    });
+  });
+
   /* ---------- Articles ---------- */
   document.querySelectorAll("[data-open]").forEach(b => b.addEventListener("click", () => {
     const d = document.getElementById(b.dataset.open);

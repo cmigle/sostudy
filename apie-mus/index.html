@@ -48,11 +48,10 @@
       <nav class="nav" id="nav" aria-label="Pagrindinis meniu">
         <a href="/">Pagrindinis</a>
         <a href="/apie-mus/" aria-current="page">Apie mus</a>
-        <a href="/reikia-pagalbos/">Reikia pagalbos?</a>
         <a href="/kontaktai/">Kontaktai</a>
-        <a href="/reikia-pagalbos/" class="status-pill" data-status><span class="status-dot" aria-hidden="true"></span><span data-status-text>Tikrinama…</span></a>
+        <a href="/reikia-pagalbos/" class="nav-cta" data-status><span class="status-dot" aria-hidden="true"></span><span>Reikia pagalbos?</span></a>
       </nav>
-      <a href="/reikia-pagalbos/" class="status-pill" data-status><span class="status-dot" aria-hidden="true"></span><span data-status-text>Tikrinama…</span></a>
+      <a href="/reikia-pagalbos/" class="head-cta" data-status><span class="status-dot" aria-hidden="true"></span><span>Reikia pagalbos?</span></a>
       <button class="burger" type="button" aria-label="Meniu" aria-expanded="false" aria-controls="nav"><span></span></button>
     </div>
   </div>
@@ -76,7 +75,7 @@
       <div class="reveal">
         <h2 class="sec-title" style="margin-bottom:24px">Kaip atsirado SOStudy</h2>
         <p><strong>„SOStudy“ atsirado iš noro atsisakyti brangių ir neefektyvių fiksuotos trukmės pamokų.</strong> Užuot laukę kelias dienas ir mokėję už visą valandą, kai tereikia dešimties minučių paaiškinimo, mokiniai gali iškviesti „greitąją mokslo pagalbą“ keliais paspaudimais.</p>
-        <p>„SOStudy“ įkūrėme dvi studentės. Susipažinome studijų metais ir supratome, kad panašiai žiūrime į inovacijas švietime. Taip tapome verslo partnerėmis.</p>
+        <p>„SOStudy“ įkūrėme mes – dvi studentės. Susipažinome studijų metais ir supratome, kad panašiai žiūrime į inovacijas švietime. Taip tapome verslo partnerėmis.</p>
         <ul class="facts">
           <li>Abi priklausome KTU talentų akademijai.</li>
           <li>Startuolį vystome KTU „Startup Space“ bendruomenėje.</li>
@@ -88,17 +87,61 @@
     </div>
   </section>
 
-  <section class="sec" id="komanda" style="padding-top:0">
+  <section class="sec team-sec" id="komanda" style="padding-top:0">
     <div class="wrap">
-      <h2 class="sec-title reveal">Komanda</h2>
+      <h2 class="sec-title reveal" style="text-align:center;margin-inline:auto">Komanda</h2>
       <div class="team">
-        <article class="member reveal" data-tilt="4">
-          <div class="ph"><img src="/assets/img/evelina.jpg" alt="Evelina Riukaitė" width="900" height="1200" loading="lazy"></div>
-          <div class="info"><div><h3>Evelina Riukaitė</h3><p class="role">Įkūrėja</p></div></div>
+        <article class="member reveal" data-flip>
+          <div class="flip">
+            <div class="face front">
+              <div class="ph"><img src="/assets/img/evelina.jpg" alt="Evelina Riukaitė" width="900" height="1200" loading="lazy"></div>
+              <div class="info">
+                <div><h3>Evelina Riukaitė</h3><p class="role">Įkūrėja</p></div>
+                <button class="flip-btn" type="button" aria-expanded="false" aria-controls="evelina-back">Patirtis</button>
+              </div>
+            </div>
+            <div class="face back" id="evelina-back">
+              <h3>Evelina Riukaitė</h3>
+              <p class="role">Įkūrėja</p>
+              <ul class="exp">
+                <li>Duomenų mokslo ir inžinerijos studijos, KTU</li>
+                <li>Gretutinės pedagogikos studijos</li>
+                <li>KTU talentų akademijos programa „GIFTed“</li>
+                <li>Korepetavimo patirtis</li>
+                <li>„Technorama 2026“ pristatė pirmąją „SOStudy“ versiją</li>
+              </ul>
+              <div class="back-foot">
+                <a class="btn btn-red" href="https://www.linkedin.com/in/evelina-riukait%C4%97" target="_blank" rel="noopener">LinkedIn profilis</a>
+                <button class="flip-btn" type="button">Atgal</button>
+              </div>
+            </div>
+          </div>
         </article>
-        <article class="member reveal" data-tilt="4">
-          <div class="ph"><img src="/assets/img/aiste.jpg" alt="Aistė Zuzevičiūtė" width="900" height="1178" loading="lazy"></div>
-          <div class="info"><div><h3>Aistė Zuzevičiūtė</h3><p class="role">Įkūrėja</p></div></div>
+        <article class="member reveal" data-flip>
+          <div class="flip">
+            <div class="face front">
+              <div class="ph"><img src="/assets/img/aiste.jpg" alt="Aistė Zuzevičiūtė" width="900" height="1180" loading="lazy"></div>
+              <div class="info">
+                <div><h3>Aistė Zuzevičiūtė</h3><p class="role">Įkūrėja</p></div>
+                <button class="flip-btn" type="button" aria-expanded="false" aria-controls="aiste-back">Patirtis</button>
+              </div>
+            </div>
+            <div class="face back" id="aiste-back">
+              <h3>Aistė Zuzevičiūtė</h3>
+              <p class="role">Įkūrėja</p>
+              <ul class="exp">
+                <li>Taikomosios matematikos studijos, KTU</li>
+                <li>Gretutinės pedagogikos studijos</li>
+                <li>KTU talentų akademijos programa „SKILLed AI“</li>
+                <li>Korepetavimo patirtis</li>
+                <li>„Technorama 2026“ pristatė pirmąją „SOStudy“ versiją</li>
+              </ul>
+              <div class="back-foot">
+                <a class="btn btn-red" href="https://www.linkedin.com/in/aiste-zuzeviciute" target="_blank" rel="noopener">LinkedIn profilis</a>
+                <button class="flip-btn" type="button">Atgal</button>
+              </div>
+            </div>
+          </div>
         </article>
       </div>
     </div>
@@ -110,31 +153,49 @@
       <p class="muted reveal" style="margin-bottom:clamp(32px,5vw,56px)">Apie tai, kaip mums sekasi.</p>
       <div class="timeline">
         <article class="post reveal">
-          <span class="when">2026 m.</span>
+          <span class="when">Šiuo metu</span>
           <div>
             <h3>Pradedame testavimą</h3>
             <p>Kviečiame pirmuosius mokinius išbandyti paslaugą. Kol testuojame, iki 10 minučių pagalbos matematikos klausimais teikiame nemokamai.</p>
             <button class="more" type="button" data-open="testavimas">Skaityti visą įrašą</button>
           </div>
-          <img src="/assets/img/car-480.webp" alt="" loading="lazy" width="480" height="393" style="object-fit:contain;background:var(--paper)">
+          <div class="post-tile notebook" aria-hidden="true"><span class="dot">10 min</span></div>
         </article>
         <article class="post reveal">
-          <span class="when">2026 m.</span>
+          <span class="when">2026 m. rugpjūčio 17 d.</span>
           <div>
-            <h3>KTU „Startup Space“ bendruomenėje</h3>
-            <p>Čia pristatome idėją, gauname grįžtamąjį ryšį ir mokomės iš kitų komandų.</p>
+            <h3>Apie mus rašo KTU</h3>
+            <p>KTU naujienose papasakojome, kaip sugedusi skalbimo mašina įkvėpė mūsų idėją ir kodėl dirbtinis intelektas nepakeičia gyvo korepetitoriaus.</p>
+            <a class="more" href="https://ktu.edu/news/sugedusi-skalbimo-masina-ikvepe-ikurti-startuoli-ktu-studentes-kuria-realaus-laiko-korepetitoriu-platforma/" target="_blank" rel="noopener">Skaityti KTU svetainėje ↗</a>
+          </div>
+          <img src="/assets/img/founders.jpg" alt="" loading="lazy" width="900" height="674">
+        </article>
+        <article class="post reveal">
+          <span class="when">2026 m. gegužės 27 d.</span>
+          <div>
+            <h3>„Technorama 2026“</h3>
+            <p>Parodoje pristatėme pirmąją „SOStudy“ versiją ir išgirdome daug naudingų pastabų bei pasiūlymų.</p>
+            <button class="more" type="button" data-open="technorama">Skaityti visą įrašą</button>
+          </div>
+          <div class="post-tile notebook" aria-hidden="true"><span class="dot">05 27</span></div>
+        </article>
+        <article class="post reveal">
+          <span class="when">2026 m. balandžio 23 d.</span>
+          <div>
+            <h3>Pirmasis susitikimas su KTU „Startup Space“ bendruomene</h3>
+            <p>Pristatėme idėją kitiems startuolių kūrėjams ir susipažinome su komandomis, kurios jau kuria įspūdingus projektus.</p>
             <button class="more" type="button" data-open="startup-space">Skaityti visą įrašą</button>
           </div>
           <img src="/assets/img/pitch.jpg" alt="SOStudy įkūrėjos pristato idėją auditorijai" loading="lazy" width="900" height="675">
         </article>
         <article class="post reveal">
-          <span class="when">2026 m.</span>
+          <span class="when">Pradžia</span>
           <div>
             <h3>Kaip atsirado mūsų greitoji</h3>
-            <p>Kodėl valandos trukmės pamokos dažnai nereikia ir iš kur atsirado greitosios pagalbos automobilis su abituriento kepure.</p>
+            <p>Idėja gimė, kai namuose sugedo skalbimo mašina ir prireikė greitai rasti meistrą.</p>
             <button class="more" type="button" data-open="pradzia">Skaityti visą įrašą</button>
           </div>
-          <img src="/assets/img/founders.jpg" alt="" loading="lazy" width="900" height="674">
+          <img src="/assets/img/car-480.webp" alt="" loading="lazy" width="480" height="393" style="object-fit:contain;background:var(--paper)">
         </article>
       </div>
     </div>
@@ -143,30 +204,41 @@
   <dialog class="article" id="testavimas" aria-labelledby="testavimas-h">
     <button class="article-close" type="button">Uždaryti</button>
     <div class="article-in">
-      <p class="muted">2026 m.</p>
+      <p class="muted">Šiuo metu</p>
       <h2 id="testavimas-h">Pradedame testavimą</h2>
       <p>Šiuo metu testuojame paslaugą, todėl iki 10 minučių pagalbos matematikos klausimais 1–12 klasių mokiniams teikiame nemokamai.</p>
-      <p>Užtenka užpildyti formą puslapyje „Reikia pagalbos?“: aprašyti uždavinį ar konkretų neaiškumą ir, jei patogiau, pridėti nuotrauką. Prieš konsultaciją el. paštu atsiųsime prisijungimo nuorodą.</p>
+      <p>Užtenka užpildyti formą puslapyje „Reikia pagalbos?“: aprašyti uždavinį arba tai, ko nesupranti, ir, jei patogiau, pridėti nuotrauką. Prieš konsultaciją el. paštu atsiųsime prisijungimo nuorodą.</p>
       <p><a class="btn btn-red" href="/reikia-pagalbos/" style="text-decoration:none">Aprašyti uždavinį</a></p>
+    </div>
+  </dialog>
+  <dialog class="article" id="technorama" aria-labelledby="technorama-h">
+    <button class="article-close" type="button">Uždaryti</button>
+    <div class="article-in">
+      <p class="muted">2026 m. gegužės 27 d.</p>
+      <h2 id="technorama-h">„Technorama 2026“</h2>
+      <p>Parodoje „Technorama 2026“ pristatėme pirmąją „SOStudy“ versiją. Startuolį tuo metu kūrėme vos kelis mėnesius, todėl lankytojų pastabos ir pasiūlymai buvo labai vertingi.</p>
+      <p>Per dieną idėją pristatėme tiek kartų, kad dabar tai padarytume net pažadintos vidury nakties. Renginys suteikė motyvacijos toliau kurti produktą ir kuo greičiau juo pasidalyti su kitais.</p>
+      <p>Dėkojame KTU „Startup Space“ komandai už galimybę dalyvauti.</p>
     </div>
   </dialog>
   <dialog class="article" id="startup-space" aria-labelledby="startup-space-h">
     <button class="article-close" type="button">Uždaryti</button>
     <div class="article-in">
-      <p class="muted">2026 m.</p>
-      <h2 id="startup-space-h">KTU „Startup Space“ bendruomenėje</h2>
+      <p class="muted">2026 m. balandžio 23 d.</p>
+      <h2 id="startup-space-h">Pirmasis susitikimas su KTU „Startup Space“ bendruomene</h2>
       <img src="/assets/img/pitch.jpg" alt="SOStudy įkūrėjos pristato idėją" loading="lazy" width="900" height="675">
-      <p>Abi priklausome KTU talentų akademijai, o startuolį vystome KTU „Startup Space“ bendruomenėje. Čia pristatome idėją, gauname grįžtamąjį ryšį ir mokomės iš kitų komandų.</p>
+      <p>Pirmą kartą susitikome su KTU „Startup Space“ bendruomene ir pristatėme savo idėją kitiems startuolių kūrėjams. Vieni jų jau kuria įspūdingus produktus, kiti, kaip ir mes, tik pradeda.</p>
+      <p>Vakaro programoje netikėtai atsirado ir „Thunderclap Labs“ komandos pačių pasigamintas kartingas. Tokių dalykų tinklaveikos renginyje tikrai nesitikėjome.</p>
     </div>
   </dialog>
   <dialog class="article" id="pradzia" aria-labelledby="pradzia-h">
     <button class="article-close" type="button">Uždaryti</button>
     <div class="article-in">
-      <p class="muted">2026 m.</p>
+      <p class="muted">Pradžia</p>
       <h2 id="pradzia-h">Kaip atsirado mūsų greitoji</h2>
       <img src="/assets/img/founders.jpg" alt="SOStudy įkūrėjos" loading="lazy" width="900" height="674">
-      <p>„SOStudy“ atsirado iš noro atsisakyti brangių ir neefektyvių fiksuotos trukmės pamokų. Užuot laukę kelias dienas ir mokėję už visą valandą, kai tereikia dešimties minučių paaiškinimo, mokiniai gali iškviesti „greitąją mokslo pagalbą“ keliais paspaudimais.</p>
-      <p>Taip atsirado ir mūsų simbolis: greitosios pagalbos automobilis su abituriento kepure.</p>
+      <p>Idėja gimė netikėtai: namuose sugedo skalbimo mašina ir prireikė greitai rasti meistrą. Kilo klausimas, kodėl tokios greitos pagalbos nėra mokantis. Kadangi abi geriausiai išmanome švietimą, nusprendėme idėją pritaikyti būtent jam.</p>
+      <p>Užuot laukę kelias dienas ir mokėję už visą valandą, kai tereikia dešimties minučių paaiškinimo, mokiniai gali iškviesti „greitąją mokslo pagalbą“ keliais paspaudimais. Taip atsirado ir mūsų simbolis: greitosios pagalbos automobilis su abituriento kepure.</p>
     </div>
   </dialog>
 
@@ -192,7 +264,7 @@
     <div class="foot-top">
       <div>
         <h2>Turi klausimų?</h2>
-        <a class="mail" href="mailto:info@sostudy.lt">info@sostudy.lt</a>
+        <a class="mail" href="mailto:sostudy.klausk@gmail.com">sostudy.klausk@gmail.com</a>
       </div>
       <nav aria-label="Puslapiai">
         <p class="foot-h">Puslapiai</p>
