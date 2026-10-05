@@ -21,6 +21,36 @@
     err.textContent = message(el);
   }
 
+  const post = (url, body) => fetch(url, { method: "POST", body, headers: { Accept: "application/json" } })
+    .then(r => r.json().then(d => ({ ok: r.ok, d }), () => ({ ok: false, d: {} })));
+
+  // send.php first; if it is missing or fails, FormSubmit (and without the photo if that is refused)
+  async function deliver(fd, action) {
+    const S = window.SOS || {};
+    try {
+      const r = await post(S.formEndpoint || action, fd);
+      if (r.ok && r.d.ok === true) return;
+      if (r.d.error) console.warn(r.d.error);
+    } catch (e) {}
+    if (!S.formFallback) throw new Error("no fallback");
+    const alt = new FormData();
+    for (const [k, v] of fd) {
+      if (k === "_gotcha") { if (v) return; continue; }        // bot: drop quietly
+      if (k === "nuotrauka") alt.append("attachment", v, v.name);
+      else alt.append(k, v);
+    }
+    alt.set("_replyto", fd.get("email") || "");
+    alt.set("_template", "table");
+    alt.set("_captcha", "false");
+    let r = await post(S.formFallback, alt);
+    if (!(r.ok && String(r.d.success) === "true") && alt.has("attachment")) {
+      alt.delete("attachment");
+      alt.set("nuotrauka", "Mokinys pridėjo nuotrauką, bet jos išsiųsti nepavyko. Paprašyk atsiųsti ją atsakant į šį laišką.");
+      r = await post(S.formFallback, alt);
+    }
+    if (!(r.ok && String(r.d.success) === "true")) throw new Error(r.d.message || "fallback failed");
+  }
+
   document.querySelectorAll("form.form").forEach(form => {
     const msg = form.querySelector(".form-foot .form-msg");
     const btn = form.querySelector("[type=submit]");
@@ -46,11 +76,7 @@
       btn.disabled = true;
       btn.textContent = "Siunčiama…";
       try {
-        const res = await fetch((window.SOS && SOS.formEndpoint) || form.action, {
-          method: "POST", body: fd, headers: { Accept: "application/json" }
-        });
-        const data = await res.json().catch(() => ({}));
-        if (!res.ok || data.ok !== true) throw new Error(data.error || res.status);
+        await deliver(fd, form.action);
         if (sent) {
           const em = sent.querySelector("[data-sent-email]");
           if (em) em.textContent = fd.get("email");

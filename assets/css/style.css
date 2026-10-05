@@ -690,3 +690,5 @@ dialog.article[open] { animation: pop .4s var(--ease); }
 #gameCanvas:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
 .game-score { display: flex; justify-content: space-between; margin: 10px 0 0; font-size: var(--fs-2); color: var(--on-night-2); }
 .game-score b { color: var(--on-night); font-variant-numeric: tabular-nums; }
+.check a { color: var(--red-ink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.check a:hover { color: var(--ink); }
