@@ -202,6 +202,9 @@
     }).observe(cv);
   }
 
+  /* ---------- Links from config ---------- */
+  if (window.SOS) document.querySelectorAll("[data-linkedin]").forEach(a => { a.href = SOS.linkedin; });
+
   /* ---------- Year ---------- */
   document.querySelectorAll("[data-year]").forEach(el => { el.textContent = new Date().getFullYear(); });
 })();
