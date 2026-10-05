@@ -494,6 +494,7 @@ section { position: relative; }
 @media (max-width: 860px) { .story { grid-template-columns: 1fr; } }
 .story p { font-size: clamp(18px, 1.5vw, 21px); color: var(--ink-2); }
 .story p strong { color: var(--ink); font-weight: 500; }
+.story p.label { font-size: 12px; }
 .photo-frame { position: relative; border-radius: var(--r); overflow: hidden; transform: rotate(-2deg); box-shadow: 0 30px 60px rgba(31,31,31,.15); }
 .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
 .photo-frame .sticker { position: absolute; right: 16px; bottom: 16px; background: var(--red); color: #fff; padding: 10px 14px; border-radius: 999px; font: 400 12px/1 var(--f-mono); text-transform: uppercase; letter-spacing: .08em; }
@@ -544,3 +545,32 @@ dialog.article[open] { animation: pop .5s var(--ease); }
 .li-empty h3 { font-size: clamp(26px, 3vw, 40px); margin-bottom: 8px; }
 .li-empty p { margin: 0; color: var(--ink-2); }
 @media (max-width: 760px) { .li-empty { grid-template-columns: 1fr; } }
+
+/* ============ Contacts ============ */
+.contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 18px; }
+@media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+.mail-card {
+  position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 40px;
+  min-height: 380px; padding: clamp(26px, 4vw, 44px); border-radius: var(--r);
+  background: var(--red); color: #fff; overflow: hidden;
+}
+.mail-card .big { font-size: clamp(32px, 5.2vw, 76px); font-weight: 600; letter-spacing: -.04em; line-height: 1; word-break: break-all; }
+.mail-card .label { color: rgba(255,255,255,.8); }
+.mail-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.mail-actions .btn { --bg: #fff; --fg: var(--ink); }
+.mail-actions .btn-ghost { --bg: transparent; --fg: #fff; box-shadow: inset 0 0 0 1.5px #fff; }
+.mail-card .ring { position: absolute; right: -80px; top: -80px; width: 280px; height: 280px; border-radius: 50%; border: 1.5px dashed rgba(255,255,255,.4); animation: spin 30s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.side-cards { display: grid; gap: 18px; }
+.mini { display: flex; align-items: center; gap: 18px; padding: 22px; border-radius: var(--r); background: var(--paper-2); border: 1px solid var(--line); transition: background .3s; }
+.mini:hover { background: #fff; }
+.mini img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; }
+.mini h3 { font-size: 22px; margin-bottom: 4px; }
+.mini .go { margin-left: auto; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--ink); flex: none; }
+.form-card { padding: clamp(26px, 4vw, 44px); border-radius: var(--r); background: var(--night); color: var(--on-night); }
+.form-card .field input, .form-card .field textarea { background: rgba(236,235,230,.07); color: var(--on-night); }
+.form-card .field input:focus, .form-card .field textarea:focus { background: rgba(236,235,230,.12); border-color: var(--on-night); }
+.form-card .field > span { color: rgba(236,235,230,.6); }
+.form-card .check { color: rgba(236,235,230,.7); }
+.toast { position: fixed; left: 50%; bottom: 28px; z-index: 960; translate: -50% 0; padding: 14px 20px; border-radius: 999px; background: var(--ink); color: var(--paper); font: 400 13px/1 var(--f-mono); text-transform: uppercase; letter-spacing: .08em; opacity: 0; transform: translateY(20px); transition: opacity .3s, transform .4s var(--ease); pointer-events: none; }
+.toast.on { opacity: 1; transform: none; }
