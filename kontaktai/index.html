@@ -107,7 +107,7 @@
           <label class="hp" aria-hidden="true">Nepildyti <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
           <div class="row2">
             <label class="field"><span>Vardas <b aria-hidden="true">*</b></span><input name="vardas" required autocomplete="name"></label>
-            <label class="field"><span>El. paštas <b aria-hidden="true">*</b></span><input type="email" name="email" required autocomplete="email" inputmode="email"></label>
+            <label class="field"><span>El. paštas <b aria-hidden="true">*</b></span><input type="email" name="email" required pattern="[^@\s]+@[^@\s]+\.[^@\s]{2,}" autocomplete="email" inputmode="email"></label>
           </div>
           <label class="field"><span>Žinutė <b aria-hidden="true">*</b></span><textarea name="zinute" required></textarea></label>
           <label class="check"><input type="checkbox" name="sutikimas" value="taip" required> <span><b class="req" aria-hidden="true">*</b> Sutinku, kad mano duomenys būtų naudojami atsakant į žinutę. Daugiau informacijos rasi <a href="/privatumo-politika/" target="_blank" rel="noopener">privatumo politikoje<span aria-hidden="true"> ↗</span><span class="sr-only"> (atsidaro naujame lange)</span></a>.</span></label>
