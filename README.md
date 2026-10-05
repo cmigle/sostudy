@@ -21,7 +21,7 @@ assets/data/            Saved copy of LinkedIn posts (fallback)
 ## Setup
 
 1. **Form:** set the founders' emails in `send.php` (`$TO`). To use Formspree instead, set `formEndpoint` in `assets/js/config.js` to the Formspree URL.
-2. **Availability:** follow `apps-script/README.md`, then paste the `/exec` URLs into `calendarEndpoints` in `assets/js/config.js`.
+2. **Availability:** follow `apps-script/README.md`, then put the `/exec` URLs into `assets/js/config.local.js` (copy `config.local.example.js`). That file is ignored by git, so upload it to Hostinger by hand once.
 3. **LinkedIn posts:** follow `apps-script/linkedin/README.md` and paste the `/exec` URL into `linkedinFeed` in `assets/js/config.js`. New posts then appear automatically.
 4. **Legal pages:** fill in the highlighted placeholders (company details, video platform, email provider, retention period).
 
