@@ -70,6 +70,15 @@
         <div class="av-state dot" id="avState">· · ·</div>
         <p class="av-sub" id="avSub">Tikriname korepetitorių užimtumą.</p>
 
+        <div class="game" id="game" hidden>
+          <div class="game-bar">
+            <p id="gameMsg">Kol tikriname kalendorius, gali pažaisti.</p>
+            <button type="button" id="gameClose">Uždaryti</button>
+          </div>
+          <canvas id="gameCanvas" tabindex="0" aria-label="Žaidimas „Greitoji“: spausk, kad greitoji pakiltų ir praskristų tarp kliūčių"></canvas>
+          <p class="game-score"><span>Taškai: <b id="score">0</b></span><span>Rekordas: <b id="best">0</b></span></p>
+        </div>
+
         <div class="week" id="week" hidden aria-label="Laisvas laikas šią savaitę nuo 8 iki 22 valandos">
           <div class="week-axis" aria-hidden="true"><span>8:00</span><span>15:00</span><span>22:00</span></div>
           <p class="week-hint">Žali taškai – laisvas laikas. Spausk tašką, kad jį pasirinktum.</p>
@@ -186,5 +195,6 @@
 <script src="/assets/js/main.js"></script>
 <script src="/assets/js/form.js" defer></script>
 <script src="/assets/js/help.js" defer></script>
+<script src="/assets/js/game.js" defer></script>
 </body>
 </html>
