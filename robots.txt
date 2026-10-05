@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /apps-script/
+Disallow: /send.php
+
+Sitemap: https://sostudy.lt/sitemap.xml
