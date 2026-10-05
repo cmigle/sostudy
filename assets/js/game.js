@@ -7,7 +7,7 @@
   const scoreEl = document.getElementById("score");
   const bestEl = document.getElementById("best");
   let W = 600, H = 260, GROUND = H - 18;
-  const GAP = 96, PW = 54, SPACING = 220, SPEED = 150, GRAV = 1300, FLAP = -380;
+  const GAP = 135, PW = 50, SPACING = 260, SPEED = 115, GRAV = 900, FLAP = -300;
   const KEY = "sos-best";
 
   let best = 0;
@@ -21,10 +21,13 @@
     pipes = [];
     score = 0;
     scoreEl.textContent = 0;
-    for (let i = 0; i < 4; i++) addPipe(W + 80 + i * SPACING);
+    for (let i = 0; i < 4; i++) addPipe(W + 160 + i * SPACING);
   }
   function addPipe(x) {
-    const top = 36 + Math.random() * (GROUND - GAP - 72);
+    // gaps stay near the middle and never jump too far from the previous one
+    const prev = pipes.length ? pipes[pipes.length - 1].top : (GROUND - GAP) / 2;
+    const lo = Math.max(30, prev - 70), hi = Math.min(GROUND - GAP - 30, prev + 70);
+    const top = lo + Math.random() * (hi - lo);
     pipes.push({ x, top, passed: false });
   }
 
@@ -52,6 +55,7 @@
     }
     car.v += GRAV * dt;
     car.y += car.v * dt;
+    if (car.y < 16) { car.y = 16; car.v = Math.max(car.v, 0); } // the top edge doesn't end the game
     for (const p of pipes) {
       p.x -= SPEED * dt;
       if (!p.passed && p.x + PW < car.x - 22) {
@@ -60,9 +64,9 @@
       }
     }
     if (pipes[0].x < -PW) { pipes.shift(); addPipe(pipes[pipes.length - 1].x + SPACING); }
-    // collisions (car hitbox ~ 44x24)
-    const hit = car.y + 12 > GROUND || car.y - 14 < 0 || pipes.some(p =>
-      car.x + 22 > p.x && car.x - 22 < p.x + PW && (car.y - 12 < p.top || car.y + 12 > p.top + GAP));
+    // collisions, with a forgiving hitbox (smaller than the drawing)
+    const hit = car.y + 12 > GROUND || pipes.some(p =>
+      car.x + 17 > p.x && car.x - 17 < p.x + PW && (car.y - 8 < p.top || car.y + 8 > p.top + GAP));
     if (hit) {
       state = "over"; t = 0;
       if (score > best) {
