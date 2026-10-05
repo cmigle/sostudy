@@ -13,6 +13,8 @@ RewriteRule ^musu-kelione/?$ /apie-mus/#kelione [R=301,L,NE]
 RewriteRule ^apie-mus$ /apie-mus/ [R=301,L]
 RewriteRule ^reikia-pagalbos$ /reikia-pagalbos/ [R=301,L]
 RewriteRule ^kontaktai$ /kontaktai/ [R=301,L]
+RewriteRule ^privatumo-politika$ /privatumo-politika/ [R=301,L]
+RewriteRule ^naudojimosi-taisykles$ /naudojimosi-taisykles/ [R=301,L]
 
 # Keep the Apps Script sources private
 RewriteRule ^apps-script/ - [F,L]
