@@ -23,7 +23,7 @@ apps-script/            Google Calendar availability service
 3. **Social:** check the LinkedIn and Instagram URLs in `assets/js/config.js` and add LinkedIn post URNs to show posts on the About page.
 4. **Legal pages:** fill in the highlighted placeholders (company details, video platform, email provider, retention period).
 
-Fonts and scripts are self-hosted, so the site makes no third-party requests until someone opens LinkedIn posts.
+Fonts and scripts are self-hosted, so the only third-party requests are the Google availability check and LinkedIn posts (loaded on click).
 
 ## Local preview
 
