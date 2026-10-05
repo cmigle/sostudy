@@ -2,23 +2,23 @@
 <html lang="lt">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Apie mus · Komanda ir mūsų kelionė | SOStudy</title>
-  <meta name="description" content="SOStudy įkūrė dvi KTU studentės, kurios tiki, kad mokymosi pagalba turi būti pasiekiama čia ir dabar. Susipažink su komanda ir sek mūsų kelionę.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Apie mus | SOStudy</title>
+  <meta name="description" content="„SOStudy“ įkūrė dvi KTU studentės, kurios tiki, kad mokymosi pagalba turi būti pasiekiama čia ir dabar. Susipažink su komanda ir mūsų kelione.">
   <link rel="canonical" href="https://sostudy.lt/apie-mus/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="lt_LT">
   <meta property="og:site_name" content="SOStudy">
   <meta property="og:url" content="https://sostudy.lt/apie-mus/">
-  <meta property="og:title" content="Apie mus · Komanda ir mūsų kelionė | SOStudy">
-  <meta property="og:description" content="SOStudy įkūrė dvi KTU studentės, kurios tiki, kad mokymosi pagalba turi būti pasiekiama čia ir dabar. Susipažink su komanda ir sek mūsų kelionę.">
+  <meta property="og:title" content="Apie mus | SOStudy">
+  <meta property="og:description" content="„SOStudy“ įkūrė dvi KTU studentės, kurios tiki, kad mokymosi pagalba turi būti pasiekiama čia ir dabar. Susipažink su komanda ir mūsų kelione.">
   <meta property="og:image" content="https://sostudy.lt/assets/img/og.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#ecebe6">
+  <meta name="theme-color" content="#efede7">
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@700..900&family=Space+Grotesk:wght@400..700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/fonts.css">
   <link rel="stylesheet" href="/assets/css/style.css">
   <script type="application/ld+json">
 {
@@ -30,10 +30,10 @@
       "@type": "EducationalOrganization",
       "@id": "https://sostudy.lt/#org",
       "name": "SOStudy",
-      "slogan": "Greitoji mokslo pagalba",
+      "sameAs": ["https://www.linkedin.com/company/sostudy-lt", "https://www.instagram.com/sostudy.lt/"],
       "founder": [
-        { "@type": "Person", "name": "Evelina Riukaitė", "jobTitle": "Co-founder", "image": "https://sostudy.lt/assets/img/evelina.jpg", "affiliation": "Kauno technologijos universitetas" },
-        { "@type": "Person", "name": "Aistė Zuzevičiūtė", "jobTitle": "Co-founder", "image": "https://sostudy.lt/assets/img/aiste.jpg", "affiliation": "Kauno technologijos universitetas" }
+        { "@type": "Person", "name": "Evelina Riukaitė", "jobTitle": "Įkūrėja", "image": "https://sostudy.lt/assets/img/evelina.jpg", "affiliation": "Kauno technologijos universitetas" },
+        { "@type": "Person", "name": "Aistė Zuzevičiūtė", "jobTitle": "Įkūrėja", "image": "https://sostudy.lt/assets/img/aiste.jpg", "affiliation": "Kauno technologijos universitetas" }
       ]
     }
   }
@@ -44,69 +44,61 @@
 <header class="site-head">
   <div class="wrap">
     <div class="head-bar">
-      <a href="/" class="logo" aria-label="SOStudy pradžia"><span class="sos">SOS</span>tudy</a>
-      <nav class="nav" id="nav">
+      <a href="/" class="logo" aria-label="SOStudy, pagrindinis puslapis"><span class="sos">SOS</span>tudy</a>
+      <nav class="nav" id="nav" aria-label="Pagrindinis meniu">
         <a href="/">Pagrindinis</a>
         <a href="/apie-mus/" aria-current="page">Apie mus</a>
         <a href="/reikia-pagalbos/">Reikia pagalbos?</a>
         <a href="/kontaktai/">Kontaktai</a>
-        <a href="/reikia-pagalbos/" class="status-pill" data-status><span class="status-dot"></span><span>Tikrinama…</span></a>
+        <a href="/reikia-pagalbos/" class="status-pill" data-status><span class="status-dot" aria-hidden="true"></span><span data-status-text>Tikrinama…</span></a>
       </nav>
-      <a href="/reikia-pagalbos/" class="status-pill" data-status><span class="status-dot"></span><span>Tikrinama…</span></a>
-      <button class="burger" aria-label="Meniu" aria-expanded="false" aria-controls="nav"><span></span></button>
+      <a href="/reikia-pagalbos/" class="status-pill" data-status><span class="status-dot" aria-hidden="true"></span><span data-status-text>Tikrinama…</span></a>
+      <button class="burger" type="button" aria-label="Meniu" aria-expanded="false" aria-controls="nav"><span></span></button>
     </div>
   </div>
 </header>
 
-<main>
-<section class="page-hero dotgrid">
+<main id="main">
+<section class="page-hero notebook">
     <div class="wrap">
-      <p class="label reveal"><b>●</b> [ 01 ] Apie mus</p>
-      <h1 class="split" style="margin-top:18px">Mes esame <span class="dot">SOStudy.</span></h1>
+      <h1>Apie <span class="dot">mus</span></h1>
     </div>
   </section>
 
-  <section class="sec" style="padding-top:0">
+  <section class="sec" style="padding-top:clamp(40px,6vw,80px)">
     <div class="wrap">
-      <p class="manifesto" id="manifesto">Mes tikime, kad mokymosi pagalba turi būti pasiekiama <span class="red">čia</span> <span class="red">ir</span> <span class="red">dabar.</span></p>
+      <p class="manifesto" id="manifesto">Mes tikime, kad mokymosi pagalba turi būti pasiekiama <span class="red">čia ir dabar.</span></p>
     </div>
   </section>
 
   <section class="sec" style="padding-top:0">
     <div class="wrap story">
       <div class="reveal">
-        <p class="label" style="margin-bottom:24px">[ 02 ] <b>Istorija</b></p>
-        <p><strong>„SOStudy“ atsirado iš noro panaikinti neefektyvias ir brangias fiksuoto laiko pamokas.</strong> Užuot laukę dienas ir mokėję už visą valandą, kai tereikia 10 minučių paaiškinimo, dabar mokiniai gali išsikviesti „greitąją mokslo pagalbą“ vos keliais paspaudimais.</p>
-        <p>„SOStudy“ branduolys esame mes, dvi studentės. Susipažinusios studijų metais ir atradusios bendrą požiūrį į inovacijas švietime, tapome verslo partnerėmis. Šiandien abi priklausome KTU talentų akademijai, o savo startuolį kasdien tobuliname ir vystome KTU Startup Space bendruomenėje.</p>
-        <div class="badges"><span class="badge">KTU talentų akademija</span><span class="badge">KTU Startup Space</span></div>
+        <h2 class="sec-title" style="margin-bottom:24px">Kaip atsirado SOStudy</h2>
+        <p><strong>„SOStudy“ atsirado iš noro atsisakyti brangių ir neefektyvių fiksuotos trukmės pamokų.</strong> Užuot laukę kelias dienas ir mokėję už visą valandą, kai tereikia dešimties minučių paaiškinimo, mokiniai gali iškviesti „greitąją mokslo pagalbą“ keliais paspaudimais.</p>
+        <p>„SOStudy“ įkūrėme dvi studentės. Susipažinome studijų metais ir supratome, kad panašiai žiūrime į inovacijas švietime. Taip tapome verslo partnerėmis.</p>
+        <ul class="facts">
+          <li>Abi priklausome KTU talentų akademijai.</li>
+          <li>Startuolį vystome KTU „Startup Space“ bendruomenėje.</li>
+        </ul>
       </div>
-      <div class="photo-frame reveal" data-cursor="Labas!">
-        <img src="/assets/img/founders.jpg" alt="SOStudy įkūrėjos Evelina ir Aistė su greitosios pagalbos automobilio piešiniu" width="900" height="674" loading="lazy">
-        <span class="sticker">Įkūrėjos</span>
-      </div>
+      <figure class="photo-frame reveal" style="margin:0">
+        <img src="/assets/img/founders.jpg" alt="SOStudy įkūrėjos su greitosios pagalbos automobilio piešiniu" width="900" height="674" loading="lazy">
+      </figure>
     </div>
   </section>
 
   <section class="sec" id="komanda" style="padding-top:0">
     <div class="wrap">
-      <div class="sec-head">
-        <p class="label">[ 03 ] <b>Komanda</b></p>
-        <h2 class="split">Dvi studentės, viena misija.</h2>
-      </div>
+      <h2 class="sec-title reveal">Komanda</h2>
       <div class="team">
-        <article class="member reveal" data-tilt="5">
-          <div class="ph"><img src="/assets/img/evelina.jpg" alt="Evelina Riukaitė" width="900" height="1178" loading="lazy"></div>
-          <div class="info">
-            <div><p class="label" style="margin:0 0 6px">Co-founder</p><h3>Evelina Riukaitė</h3></div>
-            <a class="in" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="Evelina LinkedIn">in</a>
-          </div>
+        <article class="member reveal" data-tilt="4">
+          <div class="ph"><img src="/assets/img/evelina.jpg" alt="Evelina Riukaitė" width="900" height="1200" loading="lazy"></div>
+          <div class="info"><div><h3>Evelina Riukaitė</h3><p class="role">Įkūrėja</p></div></div>
         </article>
-        <article class="member reveal" data-tilt="5" style="transition-delay:.1s">
-          <div class="ph"><img src="/assets/img/aiste.jpg" alt="Aistė Zuzevičiūtė" width="900" height="1200" loading="lazy"></div>
-          <div class="info">
-            <div><p class="label" style="margin:0 0 6px">Co-founder</p><h3>Aistė Zuzevičiūtė</h3></div>
-            <a class="in" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="Aistė LinkedIn">in</a>
-          </div>
+        <article class="member reveal" data-tilt="4">
+          <div class="ph"><img src="/assets/img/aiste.jpg" alt="Aistė Zuzevičiūtė" width="900" height="1178" loading="lazy"></div>
+          <div class="info"><div><h3>Aistė Zuzevičiūtė</h3><p class="role">Įkūrėja</p></div></div>
         </article>
       </div>
     </div>
@@ -114,87 +106,83 @@
 
   <section class="sec night" id="kelione">
     <div class="wrap">
-      <div class="sec-head">
-        <p class="label">[ 04 ] <b>Mūsų kelionė</b></p>
-        <h2 class="split">Apie tai, kaip mums sekasi.</h2>
-      </div>
+      <h2 class="sec-title reveal" style="margin-bottom:12px">Mūsų kelionė</h2>
+      <p class="muted reveal" style="margin-bottom:clamp(32px,5vw,56px)">Apie tai, kaip mums sekasi.</p>
       <div class="timeline">
         <article class="post reveal">
-          <span class="when dot">2026</span>
+          <span class="when">2026 m.</span>
           <div>
-            <p class="label" style="margin-bottom:10px">Startas</p>
-            <h3>Testavimo laikotarpis: 10 minučių nemokamai</h3>
-            <p>Atvėrėme duris pirmiesiems mokiniams. Kol testuojame, iki 10 minučių pagalbos matematikoje yra nemokamos.</p>
-            <button class="more" data-open="a-test">Skaityti →</button>
+            <h3>Pradedame testavimą</h3>
+            <p>Kviečiame pirmuosius mokinius išbandyti paslaugą. Kol testuojame, iki 10 minučių pagalbos matematikos klausimais teikiame nemokamai.</p>
+            <button class="more" type="button" data-open="testavimas">Skaityti visą įrašą</button>
           </div>
-          <img src="/assets/img/car-480.webp" alt="" loading="lazy" style="object-fit:contain;background:var(--paper)">
+          <img src="/assets/img/car-480.webp" alt="" loading="lazy" width="480" height="393" style="object-fit:contain;background:var(--paper)">
         </article>
         <article class="post reveal">
-          <span class="when dot">2026</span>
+          <span class="when">2026 m.</span>
           <div>
-            <p class="label" style="margin-bottom:10px">Bendruomenė</p>
-            <h3>Augame KTU Startup Space</h3>
-            <p>Pristatymai, grįžtamasis ryšys ir daug kavos. Kaip startuolio bendruomenė padeda mums tobulėti.</p>
-            <button class="more" data-open="a-space">Skaityti →</button>
+            <h3>KTU „Startup Space“ bendruomenėje</h3>
+            <p>Čia pristatome idėją, gauname grįžtamąjį ryšį ir mokomės iš kitų komandų.</p>
+            <button class="more" type="button" data-open="startup-space">Skaityti visą įrašą</button>
           </div>
-          <img src="/assets/img/pitch.jpg" alt="SOStudy pristatymas auditorijai" loading="lazy">
+          <img src="/assets/img/pitch.jpg" alt="SOStudy įkūrėjos pristato idėją auditorijai" loading="lazy" width="900" height="675">
         </article>
         <article class="post reveal">
-          <span class="when dot">2026</span>
+          <span class="when">2026 m.</span>
           <div>
-            <p class="label" style="margin-bottom:10px">Pradžia</p>
-            <h3>Kaip gimė „greitoji mokslo pagalba“</h3>
-            <p>Kodėl valandos trukmės pamoka dažnai yra per daug, ir iš kur atsirado mūsų greitosios automobilis.</p>
-            <button class="more" data-open="a-start">Skaityti →</button>
+            <h3>Kaip atsirado mūsų greitoji</h3>
+            <p>Kodėl valandos trukmės pamokos dažnai nereikia ir iš kur atsirado greitosios pagalbos automobilis su abituriento kepure.</p>
+            <button class="more" type="button" data-open="pradzia">Skaityti visą įrašą</button>
           </div>
-          <img src="/assets/img/founders.jpg" alt="" loading="lazy">
+          <img src="/assets/img/founders.jpg" alt="" loading="lazy" width="900" height="674">
         </article>
       </div>
     </div>
   </section>
 
-  <dialog class="article" id="a-test">
-    <button class="article-close" aria-label="Uždaryti">✕</button>
+  <dialog class="article" id="testavimas" aria-labelledby="testavimas-h">
+    <button class="article-close" type="button">Uždaryti</button>
     <div class="article-in">
-      <p class="label">2026 · Startas</p>
-      <h2>Testavimo laikotarpis: 10 minučių nemokamai</h2>
-      <p>Dabar esame testavimo laikotarpyje ir kviečiame nemokamai gauti iki 10 minučių pagalbą, susidūrus su neaiškumais matematikoje, nuo pirmos iki dvyliktos klasės.</p>
-      <p>Užtenka užpildyti formą puslapyje „Reikia pagalbos?“: aprašyti uždavinį ar konkretų neaiškumą, o jei patogiau, pridėti nuotrauką. Prieš sesiją el. paštu atsiųsime prisijungimo nuorodą.</p>
-      <p><a class="btn btn-red" href="/reikia-pagalbos/">Išbandyti <span class="arr">→</span></a></p>
+      <p class="muted">2026 m.</p>
+      <h2 id="testavimas-h">Pradedame testavimą</h2>
+      <p>Šiuo metu testuojame paslaugą, todėl iki 10 minučių pagalbos matematikos klausimais 1–12 klasių mokiniams teikiame nemokamai.</p>
+      <p>Užtenka užpildyti formą puslapyje „Reikia pagalbos?“: aprašyti uždavinį ar konkretų neaiškumą ir, jei patogiau, pridėti nuotrauką. Prieš konsultaciją el. paštu atsiųsime prisijungimo nuorodą.</p>
+      <p><a class="btn btn-red" href="/reikia-pagalbos/" style="text-decoration:none">Aprašyti uždavinį</a></p>
     </div>
   </dialog>
-  <dialog class="article" id="a-space">
-    <button class="article-close" aria-label="Uždaryti">✕</button>
+  <dialog class="article" id="startup-space" aria-labelledby="startup-space-h">
+    <button class="article-close" type="button">Uždaryti</button>
     <div class="article-in">
-      <p class="label">2026 · Bendruomenė</p>
-      <h2>Augame KTU Startup Space</h2>
-      <img src="/assets/img/pitch.jpg" alt="SOStudy pristatymas" loading="lazy">
-      <p>Abi priklausome KTU talentų akademijai, o savo startuolį kasdien tobuliname ir vystome KTU Startup Space bendruomenėje. Čia pristatome idėją, renkame grįžtamąjį ryšį ir mokomės iš kitų komandų.</p>
+      <p class="muted">2026 m.</p>
+      <h2 id="startup-space-h">KTU „Startup Space“ bendruomenėje</h2>
+      <img src="/assets/img/pitch.jpg" alt="SOStudy įkūrėjos pristato idėją" loading="lazy" width="900" height="675">
+      <p>Abi priklausome KTU talentų akademijai, o startuolį vystome KTU „Startup Space“ bendruomenėje. Čia pristatome idėją, gauname grįžtamąjį ryšį ir mokomės iš kitų komandų.</p>
     </div>
   </dialog>
-  <dialog class="article" id="a-start">
-    <button class="article-close" aria-label="Uždaryti">✕</button>
+  <dialog class="article" id="pradzia" aria-labelledby="pradzia-h">
+    <button class="article-close" type="button">Uždaryti</button>
     <div class="article-in">
-      <p class="label">2026 · Pradžia</p>
-      <h2>Kaip gimė „greitoji mokslo pagalba“</h2>
-      <img src="/assets/img/founders.jpg" alt="SOStudy įkūrėjos" loading="lazy">
-      <p>„SOStudy“ atsirado iš noro panaikinti neefektyvias ir brangias fiksuoto laiko pamokas. Užuot laukę dienas ir mokėję už visą valandą, kai tereikia 10 minučių paaiškinimo, dabar mokiniai gali išsikviesti „greitąją mokslo pagalbą“ vos keliais paspaudimais.</p>
-      <p>Taip atsirado ir mūsų simbolis: greitosios pagalbos automobilis su abiturientų kepure, kuris atvažiuoja tada, kai labiausiai reikia.</p>
+      <p class="muted">2026 m.</p>
+      <h2 id="pradzia-h">Kaip atsirado mūsų greitoji</h2>
+      <img src="/assets/img/founders.jpg" alt="SOStudy įkūrėjos" loading="lazy" width="900" height="674">
+      <p>„SOStudy“ atsirado iš noro atsisakyti brangių ir neefektyvių fiksuotos trukmės pamokų. Užuot laukę kelias dienas ir mokėję už visą valandą, kai tereikia dešimties minučių paaiškinimo, mokiniai gali iškviesti „greitąją mokslo pagalbą“ keliais paspaudimais.</p>
+      <p>Taip atsirado ir mūsų simbolis: greitosios pagalbos automobilis su abituriento kepure.</p>
     </div>
   </dialog>
 
-  <section class="sec" id="linkedin">
+  <section class="sec" id="naujienos">
     <div class="wrap">
-      <div class="sec-head">
-        <p class="label">[ 05 ] <b>LinkedIn</b></p>
-        <h2 class="split">Naujienos iš mūsų LinkedIn.</h2>
-      </div>
+      <h2 class="sec-title reveal">Sek mūsų naujienas</h2>
+      <button class="btn btn-line li-load" type="button" id="liLoad" hidden>Rodyti įrašus iš „LinkedIn“</button>
       <div class="li-grid" id="liGrid"></div>
-      <a class="li-empty reveal" id="liEmpty" href="https://www.linkedin.com/company/sostudy" target="_blank" rel="noopener" data-linkedin data-cursor="Sekti">
-        <span class="dot">in</span>
-        <div><h3>Sek mūsų kelionę LinkedIn</h3><p>Naujienos, pristatymai ir užkulisiai, vos tik jie nutinka.</p></div>
-        <span class="btn">Sekti <span class="arr">→</span></span>
-      </a>
+      <div class="socials">
+        <a class="social reveal" href="https://www.linkedin.com/company/sostudy-lt" target="_blank" rel="noopener" data-linkedin>
+          <div><h3>LinkedIn</h3><p>Naujienos apie startuolio augimą</p></div><span class="arr" aria-hidden="true">→</span>
+        </a>
+        <a class="social reveal" href="https://www.instagram.com/sostudy.lt/" target="_blank" rel="noopener" data-instagram>
+          <div><h3>Instagram</h3><p>Kasdienybė ir užkulisiai</p></div><span class="arr" aria-hidden="true">→</span>
+        </a>
+      </div>
     </div>
   </section>
 </main>
@@ -203,26 +191,35 @@
   <div class="wrap">
     <div class="foot-top">
       <div>
-        <p class="label">Turite klausimų?</p>
-        <h3>Parašyk mums bet kada.</h3>
+        <h2>Turi klausimų?</h2>
         <a class="mail" href="mailto:info@sostudy.lt">info@sostudy.lt</a>
       </div>
-      <div>
-        <p class="label">Puslapiai</p>
+      <nav aria-label="Puslapiai">
+        <p class="foot-h">Puslapiai</p>
         <div class="foot-links">
-          <a href="/">Pagrindinis</a><a href="/apie-mus/">Apie mus</a><a href="/reikia-pagalbos/">Reikia pagalbos?</a><a href="/kontaktai/">Kontaktai</a>
+          <a href="/">Pagrindinis</a>
+          <a href="/apie-mus/">Apie mus</a>
+          <a href="/reikia-pagalbos/">Reikia pagalbos?</a>
+          <a href="/kontaktai/">Kontaktai</a>
+        </div>
+      </nav>
+      <div>
+        <p class="foot-h">Sek mus</p>
+        <div class="foot-links">
+          <a href="https://www.linkedin.com/company/sostudy-lt" target="_blank" rel="noopener" data-linkedin>LinkedIn</a>
+          <a href="https://www.instagram.com/sostudy.lt/" target="_blank" rel="noopener" data-instagram>Instagram</a>
         </div>
       </div>
       <div>
-        <p class="label">Sek mus</p>
+        <p class="foot-h">Teisinė informacija</p>
         <div class="foot-links">
-          <a href="https://www.linkedin.com/company/sostudy" target="_blank" rel="noopener" data-linkedin>LinkedIn ↗</a>
-          <a href="/apie-mus/#kelione">Mūsų kelionė</a>
+          <a href="/privatumo-politika/">Privatumo politika</a>
+          <a href="/naudojimosi-taisykles/">Naudojimosi taisyklės</a>
         </div>
       </div>
     </div>
-    <canvas id="wordmark" aria-label="SOStudy" role="img"></canvas>
-    <div class="foot-bottom label"><span>© <span data-year>2026</span> SOStudy. Visos teisės saugomos.</span><span>Kaunas · KTU Startup Space</span></div>
+    <canvas id="wordmark" role="img" aria-label="SOStudy"></canvas>
+    <div class="foot-bottom"><span>© <span data-year>2026</span> SOStudy</span><span>Kaunas</span></div>
   </div>
 </footer>
 
