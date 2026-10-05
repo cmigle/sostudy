@@ -127,57 +127,24 @@
     </div>
   </section>
 
-  <section class="drive night" aria-labelledby="drive-h">
-    <div class="drive-sticky">
-      <div class="drive-text">
-        <h2 id="drive-h">Rytoj kontrolinis, o uždavinio išspręsti nepavyksta?</h2>
-        <p>Aprašyk, kas neaišku, ir korepetitorius susisieks per kelias minutes. Laukti kitos pamokos nereikia.</p>
-      </div>
-      <div class="road" aria-hidden="true"></div>
-      <div class="drive-car" id="driveCar" aria-hidden="true">
-          <svg class="van" viewBox="0 0 420 210" role="img" aria-label="SOStudy greitosios pagalbos automobilis">
-            <defs><clipPath id="vanBody"><path d="M30 165V132q0-14 14-18l40-10 34-46q4-6 12-6h250q12 0 12 12v101z"/></clipPath></defs>
-            <ellipse cx="212" cy="196" rx="196" ry="8" fill="#000" opacity=".35"/>
-            <g class="cap">
-              <rect x="238" y="30" width="40" height="22" rx="4" fill="#6f8c5c"/>
-              <path d="M210 34 258 21l48 13-48 13z" fill="#8da978"/>
-              <path d="M258 34h36v18" fill="none" stroke="#f7b267" stroke-width="3" stroke-linecap="round"/>
-            </g>
-            <rect x="134" y="40" width="24" height="12" rx="3" fill="#ff4a4b"/>
-            <path d="M30 165V132q0-14 14-18l40-10 34-46q4-6 12-6h250q12 0 12 12v101z" fill="#efede7"/>
-            <g clip-path="url(#vanBody)">
-              <rect x="0" y="112" width="420" height="16" fill="#ff4a4b"/>
-              <rect x="206" y="62" width="200" height="6" fill="#ff4a4b"/>
-              <rect x="0" y="146" width="420" height="30" fill="#000" opacity=".07"/>
-            </g>
-            <path d="M88 102 120 60h30v42z" fill="#bfe3ee"/>
-            <rect x="158" y="60" width="44" height="42" rx="4" fill="#bfe3ee"/>
-            <rect x="334" y="74" width="46" height="30" rx="4" fill="#bfe3ee"/>
-            <g stroke="#1e1a17" stroke-opacity=".28" stroke-width="2" fill="none">
-              <path d="M208 58v104M272 58v104M326 58v104"/>
-            </g>
-            <rect x="196" y="106" width="8" height="3" rx="1.5" fill="#1e1a17" opacity=".5"/>
-            <g stroke-width="9" stroke-linecap="round">
-              <path d="M284 74l28 28" stroke="#8da978"/>
-              <path d="M312 74l-28 28" stroke="#7fb6d6"/>
-            </g>
-            <path d="M33 118l16-4v9l-16 3z" fill="#f7b267"/>
-            <rect x="24" y="150" width="34" height="14" rx="5" fill="#1e1a17"/>
-            <rect x="110" y="80" width="8" height="16" rx="3" fill="#1e1a17"/>
-            <circle cx="104" cy="168" r="31" fill="#1e1a17"/>
-            <circle cx="320" cy="168" r="31" fill="#1e1a17"/>
-            <g class="wheel">
-              <circle cx="104" cy="168" r="24" fill="#2c2724" stroke="#0e0c0b" stroke-width="4"/>
-              <circle cx="104" cy="168" r="11" fill="#cfcac0"/>
-              <circle cx="104" cy="161" r="2.4" fill="#2c2724"/><circle cx="111" cy="168" r="2.4" fill="#2c2724"/><circle cx="104" cy="175" r="2.4" fill="#2c2724"/><circle cx="97" cy="168" r="2.4" fill="#2c2724"/>
-            </g>
-            <g class="wheel">
-              <circle cx="320" cy="168" r="24" fill="#2c2724" stroke="#0e0c0b" stroke-width="4"/>
-              <circle cx="320" cy="168" r="11" fill="#cfcac0"/>
-              <circle cx="320" cy="161" r="2.4" fill="#2c2724"/><circle cx="327" cy="168" r="2.4" fill="#2c2724"/><circle cx="320" cy="175" r="2.4" fill="#2c2724"/><circle cx="313" cy="168" r="2.4" fill="#2c2724"/>
-            </g>
-          </svg>
+  <section class="solve night" aria-labelledby="solve-h">
+    <div class="solve-sticky">
+      <div class="wrap solve-grid">
+        <div class="solve-text">
+          <h2 id="solve-h">Rytoj kontrolinis, o uždavinio išspręsti nepavyksta?</h2>
+          <p>Korepetitorius paaiškins kiekvieną sprendimo žingsnį, kad suprastum, kodėl sprendžiama būtent taip.</p>
         </div>
+        <figure class="nb notebook" data-tilt="3" aria-label="Lygties sprendimo pavyzdys">
+          <figcaption class="nb-task">Išspręsk lygtį:</figcaption>
+          <div class="nb-line"><span class="m">x² − 5x + 6 = 0</span></div>
+          <div class="nb-line"><span class="m">(x − 2)(x − 3) = 0</span><span class="note">Ieškome dviejų skaičių: jų sandauga lygi 6, o suma lygi 5.</span></div>
+          <div class="nb-line"><span class="m">x − 2 = 0 arba x − 3 = 0</span><span class="note">Sandauga lygi nuliui, kai bent vienas daugiklis lygus nuliui.</span></div>
+          <div class="nb-line nb-ans"><span class="m">x<sub>1</sub> = 2, x<sub>2</sub> = 3</span>
+            <svg class="ring" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M14 34C10 12 120 2 186 16c14 4 12 30-10 36-50 12-150 8-164-12C4 26 40 10 96 8"/></svg>
+          </div>
+          <p class="nb-check">Patikrinimas: 2² − 5 · 2 + 6 = 0 ir 3² − 5 · 3 + 6 = 0</p>
+        </figure>
+      </div>
     </div>
   </section>
 

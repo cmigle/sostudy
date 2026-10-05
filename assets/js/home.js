@@ -16,12 +16,32 @@
   /* ---------- Car leaves the hero as you scroll ---------- */
   gsap.to(".car-stage", { xPercent: -18, yPercent: 10, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
 
-  /* ---------- Drive scene ---------- */
-  const driveCar = document.getElementById("driveCar");
-  gsap.timeline({ scrollTrigger: { trigger: ".drive", start: "top top", end: "bottom bottom", scrub: .6, invalidateOnRefresh: true } })
-    .fromTo(driveCar, { x: () => innerWidth + 40 }, { x: () => -driveCar.offsetWidth - 40, ease: "none" }, 0)
-    .fromTo(".road", { backgroundPositionX: 0 }, { backgroundPositionX: -900, ease: "none" }, 0)
-    .to("#driveCar .wheel", { rotation: -1440, transformOrigin: "50% 50%", ease: "none" }, 0);
+  /* ---------- Notebook: the solution writes itself as you scroll ---------- */
+  const steps = [];
+  document.querySelectorAll(".nb-line, .nb-check").forEach(el => {
+    steps.push([el.querySelector(".m") || el, "write"]);
+    const note = el.querySelector(".note");
+    if (note) steps.push([note, "fade"]);
+    if (el.classList.contains("nb-ans")) steps.push([el.querySelector(".ring path"), "ring"]);
+  });
+  const anim = (tl, [el, kind], at) => {
+    if (kind === "write") tl.fromTo(el, { clipPath: "inset(-10% 100% -10% 0)" }, { clipPath: "inset(-10% 0% -10% 0)", ease: "none", duration: 1 }, at);
+    else if (kind === "fade") tl.fromTo(el, { opacity: 0, y: 8 }, { opacity: 1, y: 0, ease: "power1.out", duration: .6 }, at);
+    else tl.fromTo(el, { strokeDasharray: "1 1", strokeDashoffset: 1, opacity: 0 }, { strokeDashoffset: 0, opacity: 1, ease: "power1.inOut", duration: 1 }, at);
+  };
+  ScrollTrigger.matchMedia({
+    // pinned: the page stays put while the steps appear
+    "(min-width: 861px) and (min-height: 601px)": () => {
+      const tl = gsap.timeline({ scrollTrigger: { trigger: ".solve", start: "top top", end: "bottom bottom", scrub: .5 } });
+      tl.to({}, { duration: .4 });
+      steps.forEach(s => anim(tl, s));
+      tl.to({}, { duration: .6 });
+    },
+    // small or short screens: each step appears as it scrolls into view
+    "(max-width: 860px), (max-height: 600px)": () => {
+      steps.forEach(s => anim(gsap.timeline({ scrollTrigger: { trigger: s[0].closest(".nb-line, .nb-check"), start: "top 88%", end: "top 62%", scrub: .5 } }), s, 0));
+    }
+  });
 
   /* ---------- Steps: pinned sideways scroll, only when there is room ---------- */
   ScrollTrigger.matchMedia({

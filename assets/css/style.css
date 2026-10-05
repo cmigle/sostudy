@@ -281,23 +281,35 @@ section { position: relative; }
 .vs .us { color: var(--red); }
 @media (max-width: 380px) { .vs th, .vs td { padding: 14px 6px; font-size: var(--fs-1); } }
 
-/* ============ Drive (scroll scene) ============ */
-.drive { height: 260vh; }
-.drive-sticky { position: sticky; top: 0; height: 100svh; height: 100dvh; overflow: hidden; display: grid; place-items: center; }
-.drive-text { position: relative; z-index: 2; width: 100%; max-width: 1040px; padding-inline: var(--gut-l) var(--gut-r); margin-top: -26vh; }
-.drive-text h2 { font-size: var(--fs-6); max-width: 20ch; }
-.drive-text p { margin: 18px 0 0; font-size: var(--fs-4); color: var(--on-night-2); max-width: 40ch; }
-.road { position: absolute; left: 0; right: 0; bottom: 12vh; height: 2px; background-image: repeating-linear-gradient(90deg, rgba(239, 237, 231, .45) 0 28px, transparent 28px 56px); }
-.drive-car { position: absolute; left: 0; bottom: calc(12vh - 4px); width: clamp(200px, min(30vw, 46vh), 440px); z-index: 3; will-change: transform; }
-.drive-car svg { width: 100%; height: auto; display: block; overflow: visible; }
-@media (max-width: 700px) { .drive { height: 200vh; } }
-@media (orientation: landscape) and (max-height: 560px) {
-  .drive-car { width: clamp(150px, 40vh, 240px); bottom: calc(6vh - 4px); }
-  .road { bottom: 6vh; }
-  .drive-text { margin-top: -30vh; }
-  .drive-text h2 { font-size: clamp(26px, 8vh, 44px); }
-  .drive-text p { font-size: var(--fs-2); }
+/* ============ Solve (scroll scene) ============ */
+.solve { height: 280vh; }
+.solve-sticky { position: sticky; top: 0; height: 100svh; height: 100dvh; display: grid; align-items: center; overflow: hidden; }
+.solve-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+.solve-text h2 { font-size: var(--fs-6); max-width: 14ch; }
+.solve-text p { margin: 20px 0 0; font-size: var(--fs-4); color: var(--on-night-2); max-width: 34ch; }
+.nb {
+  --margin: 48px;
+  margin: 0; color: var(--ink); border-radius: var(--r);
+  padding: clamp(24px, 3vw, 40px) clamp(20px, 3vw, 40px) clamp(24px, 3vw, 36px) calc(var(--margin) + 22px);
+  box-shadow: 0 40px 70px -30px rgba(0, 0, 0, .7);
+  transform: rotate(-1.2deg); transition: transform .5s var(--ease);
 }
+.nb-task { margin: 0 0 12px; font-size: var(--fs-2); color: var(--ink-2); }
+.nb-line { padding: 8px 0; }
+.nb-line .m { display: block; width: fit-content; font: 600 clamp(22px, 2.3vw, 32px)/1.3 var(--f-display); letter-spacing: -.01em; white-space: nowrap; }
+.nb-line .note { display: block; margin-top: 4px; padding-left: 12px; border-left: 2px solid var(--red); font-size: 15px; line-height: 1.45; color: var(--red-ink); max-width: 40ch; }
+.nb-ans { position: relative; width: fit-content; margin-top: 6px; }
+.ring { position: absolute; left: -18px; top: -6px; width: calc(100% + 36px); height: calc(100% + 12px); overflow: visible; pointer-events: none; }
+.ring path { fill: none; stroke: var(--red); stroke-width: 2.5; stroke-linecap: round; }
+.nb-line sub { font-size: .6em; vertical-align: -.25em; line-height: 0; }
+.nb-check { margin: 18px 0 0; font-size: 15px; color: var(--ink-2); }
+@media (max-width: 860px), (max-height: 600px) {
+  .solve { height: auto; }
+  .solve-sticky { position: relative; height: auto; padding-block: clamp(72px, 11vw, 150px); }
+  .solve-grid { grid-template-columns: 1fr; }
+  .solve-text h2 { max-width: 18ch; }
+}
+@media (max-width: 420px) { .nb { --margin: 20px; transform: none; } .nb-line .m { white-space: normal; } }
 
 /* ============ Steps (horizontal) ============ */
 .steps-pin { min-height: 100svh; min-height: 100dvh; display: flex; flex-direction: column; justify-content: center; padding-block: clamp(72px, 10vh, 120px); overflow: hidden; }
@@ -630,6 +642,6 @@ dialog.article[open] { animation: pop .4s var(--ease); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001s !important; animation-iteration-count: 1 !important; transition-duration: .001s !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1; transform: none; }
-  .drive { height: auto; }
-  .drive-sticky { position: relative; height: auto; padding: 120px 0 220px; }
+  .solve { height: auto; }
+  .solve-sticky { position: relative; height: auto; padding-block: 120px; }
 }
