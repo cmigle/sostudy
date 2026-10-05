@@ -10,6 +10,68 @@
     }, { passive: true });
   }
 
+  /* ---------- Steps: card stack, click or arrows ---------- */
+  const stack = document.getElementById("stack");
+  if (stack) {
+    const cards = [...stack.querySelectorAll(".step")];
+    const count = document.getElementById("stackCount");
+    let front = 0, busy = false;
+    stack.tabIndex = 0;
+    stack.setAttribute("role", "region");
+    stack.setAttribute("aria-roledescription", "kortelių rinkinys");
+    stack.setAttribute("aria-label", "Konsultacijos žingsniai");
+    const layout = () => {
+      cards.forEach((c, i) => {
+        const k = (i - front + cards.length) % cards.length;
+        c.style.setProperty("--k", k);
+        c.inert = k !== 0;
+      });
+      count.textContent = `${front + 1} / ${cards.length}`;
+    };
+    const wait = ms => new Promise(r => setTimeout(r, reduce ? 0 : ms));
+    async function go(dir) {
+      if (busy) return;
+      busy = true;
+      if (dir > 0) {
+        // front card flies out, then tucks in at the back
+        const c = cards[front];
+        c.classList.add("out");
+        await wait(320);
+        front = (front + 1) % cards.length;
+        layout();
+        c.classList.remove("out");
+      } else {
+        // back card flies in from the left onto the front
+        front = (front - 1 + cards.length) % cards.length;
+        const c = cards[front];
+        c.classList.add("instant", "out");
+        c.offsetWidth;
+        c.classList.remove("instant");
+        layout();
+        c.classList.remove("out");
+      }
+      await wait(350);
+      busy = false;
+    }
+    layout();
+    stack.addEventListener("click", () => go(1));
+    document.getElementById("stackNext").addEventListener("click", () => go(1));
+    document.getElementById("stackPrev").addEventListener("click", () => go(-1));
+    stack.addEventListener("keydown", e => {
+      if (e.key === "ArrowRight" || e.key === "Enter" || e.key === " ") { e.preventDefault(); go(1); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); }
+    });
+    // swipe on touch screens
+    let sx = null;
+    stack.addEventListener("pointerdown", e => { if (e.pointerType !== "mouse") sx = e.clientX; });
+    stack.addEventListener("pointerup", e => {
+      if (sx === null) return;
+      const dx = e.clientX - sx; sx = null;
+      if (Math.abs(dx) > 40) { e.preventDefault(); go(dx < 0 ? 1 : -1); stack.dataset.swiped = 1; }
+    });
+    stack.addEventListener("click", e => { if (stack.dataset.swiped) { e.stopImmediatePropagation(); delete stack.dataset.swiped; } }, true);
+  }
+
   if (reduce || !window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
 
@@ -40,27 +102,6 @@
     // small or short screens: each step appears as it scrolls into view
     "(max-width: 860px), (max-height: 600px)": () => {
       steps.forEach(s => anim(gsap.timeline({ scrollTrigger: { trigger: s[0].closest(".nb-line, .nb-check"), start: "top 88%", end: "top 62%", scrub: .5 } }), s, 0));
-    }
-  });
-
-  /* ---------- Steps: pinned sideways scroll, only when there is room ---------- */
-  ScrollTrigger.matchMedia({
-    "(min-width: 761px) and (min-height: 601px)": () => {
-      const track = document.getElementById("stepsTrack");
-      const distance = () => Math.max(0, track.scrollWidth - document.documentElement.clientWidth);
-      const move = gsap.to(track, {
-        x: () => -distance(),
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".steps-pin", start: "top top",
-          end: () => "+=" + distance(),
-          pin: true, scrub: .4, invalidateOnRefresh: true, anticipatePin: 1
-        }
-      });
-      gsap.utils.toArray(".step").forEach((s, i) => gsap.from(s, {
-        rotate: i % 2 ? 4 : -4, y: 40, ease: "power2.out",
-        scrollTrigger: { trigger: s, containerAnimation: move, start: "left 100%", end: "left 60%", scrub: true }
-      }));
     }
   });
 
