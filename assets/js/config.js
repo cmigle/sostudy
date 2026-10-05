@@ -14,11 +14,7 @@ window.SOS = {
   linkedin: "https://www.linkedin.com/company/sostudy-lt",
   instagram: "https://www.instagram.com/sostudy.lt/",
 
-  // LinkedIn post URNs, newest first. On a post: ··· → Embed this post → copy the
-  // "urn:li:share:..." or "urn:li:ugcPost:..." part of the iframe src.
-  linkedinPosts: [
-    "urn:li:share:7495111728746369025",
-    "urn:li:ugcPost:7467163448536150016",
-    "urn:li:ugcPost:7453524900633317377"
-  ]
+  // LinkedIn feed: Apps Script /exec URL (see apps-script/linkedin/README.md).
+  // Empty or unreachable: the site shows the saved copy in /assets/data/linkedin.json.
+  linkedinFeed: ""
 };

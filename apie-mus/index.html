@@ -231,13 +231,18 @@
   </dialog>
 
   <section class="sec" id="naujienos">
+    <div class="wrap li-head">
+      <h2 class="sec-title reveal">Naujienos iš „LinkedIn“</h2>
+      <div class="li-nav" id="liNav" hidden>
+        <button type="button" data-dir="-1" aria-label="Ankstesni įrašai">←</button>
+        <button type="button" data-dir="1" aria-label="Kiti įrašai">→</button>
+      </div>
+    </div>
+    <div class="li-track" id="liTrack" hidden aria-label="SOStudy įrašai „LinkedIn“"></div>
     <div class="wrap">
-      <h2 class="sec-title reveal">Sek mūsų naujienas</h2>
-      <button class="btn btn-line li-load" type="button" id="liLoad" hidden>Rodyti įrašus iš „LinkedIn“</button>
-      <div class="li-grid" id="liGrid"></div>
       <div class="socials">
         <a class="social reveal" href="https://www.linkedin.com/company/sostudy-lt" target="_blank" rel="noopener" data-linkedin>
-          <div><h3>LinkedIn</h3><p>Naujienos apie startuolio augimą</p></div><span class="arr" aria-hidden="true">→</span>
+          <div><h3>LinkedIn</h3><p>Sek visas naujienas</p></div><span class="arr" aria-hidden="true">→</span>
         </a>
         <a class="social reveal" href="https://www.instagram.com/sostudy.lt/" target="_blank" rel="noopener" data-instagram>
           <div><h3>Instagram</h3><p>Kasdienybė ir užkulisiai</p></div><span class="arr" aria-hidden="true">→</span>

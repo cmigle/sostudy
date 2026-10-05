@@ -67,17 +67,43 @@
   const deep = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
   if (deep && deep.tagName === "DIALOG") deep.showModal();
 
-  /* ---------- LinkedIn posts: load only after a click (LinkedIn sets cookies) ---------- */
-  const grid = document.getElementById("liGrid");
-  const loadBtn = document.getElementById("liLoad");
-  const posts = (window.SOS && SOS.linkedinPosts) || [];
-  if (grid && loadBtn && posts.length) {
-    loadBtn.hidden = false;
-    loadBtn.addEventListener("click", () => {
-      grid.innerHTML = posts.map(urn =>
-        `<iframe src="https://www.linkedin.com/embed/feed/update/${urn}?collapsed=1" height="560" loading="lazy" title="SOStudy įrašas „LinkedIn“" allowfullscreen></iframe>`
-      ).join("");
-      loadBtn.remove();
-    });
+  /* ---------- LinkedIn posts: sideways scroller, each card opens the post ---------- */
+  const track = document.getElementById("liTrack");
+  if (track) {
+    const nav = document.getElementById("liNav");
+    const fmt = new Intl.DateTimeFormat("lt-LT", { year: "numeric", month: "long", day: "numeric", timeZone: "Europe/Vilnius" });
+    const esc = s => String(s).replace(/[&<>"]/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[ch]));
+    const load = url => fetch(url).then(r => r.ok ? r.json() : Promise.reject(r.status));
+    const feed = window.SOS && SOS.linkedinFeed;
+    (feed ? load(feed).catch(() => load("/assets/data/linkedin.json")) : load("/assets/data/linkedin.json"))
+      .then(data => {
+        const posts = (data.posts || []).filter(p => p.url && p.text);
+        if (!posts.length) return;
+        track.innerHTML = posts.map(p => `
+          <a class="li-card" href="${esc(p.url)}" target="_blank" rel="noopener" data-cursor="Atidaryti">
+            ${p.image ? `<div class="li-img"><img src="${esc(p.image)}" alt="" loading="lazy" referrerpolicy="no-referrer"></div>` : ""}
+            <div class="li-body">
+              <p class="li-meta">${esc([p.author, fmt.format(p.date)].filter(Boolean).join(" · "))}</p>
+              <p class="li-text">${esc(p.text)}</p>
+              <span class="li-more">Skaityti „LinkedIn“ ↗</span>
+            </div>
+          </a>`).join("");
+        track.querySelectorAll("img").forEach(img => img.addEventListener("error", () => img.parentNode.remove()));
+        track.hidden = false;
+        const update = () => {
+          const max = track.scrollWidth - track.clientWidth - 2;
+          nav.hidden = max <= 0;
+          nav.querySelector("[data-dir=\"-1\"]").disabled = track.scrollLeft <= 2;
+          nav.querySelector("[data-dir=\"1\"]").disabled = track.scrollLeft >= max;
+        };
+        nav.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+          const card = track.querySelector(".li-card");
+          track.scrollBy({ left: +b.dataset.dir * (card.offsetWidth + 16), behavior: "smooth" });
+        }));
+        track.addEventListener("scroll", update, { passive: true });
+        addEventListener("resize", update);
+        update();
+      })
+      .catch(() => {});
   }
 })();
