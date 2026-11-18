@@ -453,11 +453,13 @@ section { position: relative; }
 .own .slots-h { display: block; margin: 0 0 10px; }
 .av { min-width: 0; }
 .own input {
+  display: block; -webkit-appearance: none; appearance: none;
   min-width: 0; max-width: 100%;
   width: 100%; min-height: 48px; padding: 10px 14px; border-radius: var(--r-in);
   border: 1.5px solid rgba(239, 237, 231, .3); background: transparent; color: var(--on-night);
   font: 600 var(--fs-2)/1.2 var(--f-body); color-scheme: dark;
 }
+.own input::-webkit-date-and-time-value { text-align: left; }
 .own input:hover { border-color: rgba(239, 237, 231, .6); }
 .own input:focus { outline: 2px solid var(--red); outline-offset: 2px; border-color: var(--on-night); }
 .own-note { margin: 10px 0 0; font-size: var(--fs-1); color: var(--on-night-2); }
