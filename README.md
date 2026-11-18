@@ -90,4 +90,4 @@ Add `?demo` or `?demo=busy` to the help page URL to see the availability widget 
 
 ## History
 
-The git history starts on 5 October 2026, when the project moved here from an older local repository that was later lost.
+The original repository was lost when the project moved to GitHub on 5 October 2026. The dates of the commits up to "deploy prep" are approximate, reconstructed from when I worked on it: Thursday evenings and weekends from 18 September.
